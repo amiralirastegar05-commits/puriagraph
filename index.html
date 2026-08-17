@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="پوریا گراف | طراحی گرافیک">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<title>پوریا گراف | طراحی گرافیک</title>
+<style>
+@font-face{
+  font-family:"Yekan New Face";
+  src:url("fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
+  font-weight:500;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Yekan New Face";
+  src:url("fonts/YekanNewFaceD1-Black.ttf") format("truetype");
+  font-weight:900;
+  font-style:normal;
+  font-display:swap;
+}
+
+:root{
+ --bg:#070707;--surface:#11100e;--surface2:#181613;--gold:#d9ae55;--gold2:#f4d487;
+ --text:#faf8f2;--muted:#9b968b;--line:rgba(244,212,135,.13);
+ --shadow:0 18px 55px rgba(0,0,0,.38);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:
+ radial-gradient(circle at 50% -10%,rgba(217,174,85,.15),transparent 34%),
+ radial-gradient(circle at 100% 45%,rgba(217,174,85,.05),transparent 30%),var(--bg);
+ color:var(--text);font-family:"Yekan New Face",Tahoma,Arial,sans-serif;overflow-x:hidden}
+button,a{-webkit-tap-highlight-color:transparent}
+button{font-family:inherit}
+.page{width:min(100% - 24px,760px);margin:auto;padding:18px 0 105px}
+.top{display:flex;justify-content:flex-end;height:38px}
+.hero{text-align:center;padding:28px 0 24px;animation:up .65s ease both}
+.logo-wrap{width:116px;height:116px;margin:auto;padding:3px;border-radius:34px;background:linear-gradient(135deg,var(--gold),#7e5c22,var(--gold2));box-shadow:0 15px 45px rgba(217,174,85,.18)}
+.logo{width:100%;height:100%;object-fit:cover;border-radius:31px;display:block}
+.name{margin-top:17px;font-size:clamp(38px,9vw,58px);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{margin-top:9px;color:var(--muted);font-size:12px}
+.order-box{margin-top:23px;padding:18px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(145deg,rgba(217,174,85,.09),rgba(17,16,14,.9));box-shadow:var(--shadow);text-align:right}
+.order-title{font-size:16px;font-weight:900}.order-sub{font-size:10px;color:var(--muted);margin-top:6px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
+.contact{min-height:62px;display:flex;align-items:center;gap:11px;padding:9px 11px;text-decoration:none;color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:15px;transition:.25s}
+.contact:hover{transform:translateY(-3px);border-color:rgba(244,212,135,.4)}
+.icon{width:44px;height:44px;min-width:44px;border-radius:13px;background:rgba(217,174,85,.1);color:var(--gold2);display:grid;place-items:center;font-size:19px;box-shadow:inset 0 0 0 1px rgba(244,212,135,.05)}
+.contact strong{display:block;font-size:10px;line-height:1.4}.contact>span:last-child{display:block;color:var(--muted);font:9px Arial;margin-top:3px;direction:ltr;text-align:right}.contact>span:last-child strong{font-family:"Yekan New Face",Tahoma,Arial,sans-serif;color:var(--text);font-size:10px;direction:rtl;text-align:right}
+.section{margin-top:30px;animation:up .6s ease both}
+.head{display:flex;justify-content:space-between;align-items:end;margin:0 3px 13px}
+.head h2{font-size:18px;font-weight:900}.head p{font-size:10px;color:var(--muted);margin-top:5px}
+.categories{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.category{position:relative;overflow:hidden;min-height:175px;border:1px solid var(--line);border-radius:21px;background:var(--surface);box-shadow:var(--shadow);cursor:pointer;text-align:right;transition:.3s}
+.category:hover{transform:translateY(-5px);border-color:rgba(244,212,135,.38)}
+.category img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:.45s}
+.category:hover img{transform:scale(1.06);opacity:.58}
+.category:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,5,.96),rgba(5,5,5,.12) 75%)}
+.category-info{position:absolute;z-index:2;bottom:14px;right:14px;left:10px}
+.category-title{font-size:13px;font-weight:900}.category-count{font-size:9px;color:var(--gold2);margin-top:5px}
+.category-arrow{position:absolute;z-index:3;top:12px;left:12px;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.42);color:var(--gold2)}
+.modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(3,3,3,.94);backdrop-filter:blur(16px)}
+.modal.open{display:flex}
+.gallery{width:min(920px,100%);max-height:94vh;display:flex;flex-direction:column;gap:11px}
+.gallery-head{display:flex;align-items:center;justify-content:space-between}.gallery-head strong{font-size:15px}.count{font:10px Arial;color:#aaa;direction:ltr}
+.close{width:39px;height:39px;border:0;border-radius:50%;background:rgba(255,255,255,.09);color:#fff;font-size:20px;cursor:pointer}
+.main-image-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:0}
+.main-image{max-width:calc(100vw - 40px);max-height:72vh;object-fit:contain;border-radius:14px;user-select:none}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:43px;height:43px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;font-size:21px}.prev{right:5px}.next{left:5px}
+.thumbs{display:flex;gap:7px;overflow:auto;scrollbar-width:none}.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 55px;height:55px;padding:0;border:1px solid transparent;border-radius:9px;overflow:hidden;opacity:.48;cursor:pointer;background:none}.thumb.active{opacity:1;border-color:var(--gold)}.thumb img{width:100%;height:100%;object-fit:cover}
+.bottom-nav{position:fixed;z-index:900;bottom:14px;left:50%;transform:translateX(-50%);width:min(calc(100% - 28px),500px);padding:7px;border:1px solid rgba(244,212,135,.2);border-radius:23px;background:rgba(24,22,19,.76);backdrop-filter:blur(18px);box-shadow:0 15px 50px rgba(0,0,0,.55);display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.bottom-nav button{border:0;background:transparent;color:#8f8a7f;border-radius:17px;min-height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-size:9px;transition:.2s}.bottom-nav button i{font-size:17px}.bottom-nav button.active,.bottom-nav button:hover{color:var(--gold2);background:rgba(217,174,85,.09)}
+.toast{position:fixed;z-index:2000;bottom:90px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--gold);color:#17130b;padding:10px 15px;border-radius:12px;font-size:10px;font-weight:900;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid var(--line);color:#68645d;font-size:9px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.page{width:calc(100% - 22px)}.logo-wrap{width:100px;height:100px}.categories{gap:9px}.category{min-height:155px}.category-title{font-size:11px}.contact-grid{gap:8px}.main-image{max-height:68vh}}
+</style>
+</head>
+<body>
+<div class="page">
+ <div class="top"></div>
+
+ <header class="hero" id="home">
+  <div class="logo-wrap"><img class="logo" src="logo.jpg" alt="لوگوی پوریا گراف"></div>
+  <h1 class="name">پوریا گراف</h1>
+  <p class="tag">طراح گرافیک | خلاقیت در قالب تصویر</p>
+
+  <div class="order-box">
+   <div class="order-title">ثبت سفارش طراحی</div>
+   <div class="order-sub">برای شروع پروژه، از راه‌های ارتباطی زیر با من در تماس باشید.</div>
+   <div class="contact-grid">
+    <a class="contact" href="tel:09224001160"><span class="icon"><i class="fa-solid fa-phone"></i></span><span><strong>تماس مستقیم</strong><span>09224001160</span></span></a>
+    <a class="contact" href="https://eitaa.com/puria_graph" target="_blank" rel="noopener"><span class="icon"><i class="fa-solid fa-comment-dots"></i></span><span><strong>کانال ایتا</strong><span>puria_graph</span></span></a>
+    <a class="contact" href="https://eitaa.com/puriagraph" target="_blank" rel="noopener"><span class="icon"><i class="fa-solid fa-headset"></i></span><span><strong>پشتیبانی ایتا</strong><span>puriagraph</span></span></a>
+    <a class="contact" href="https://t.me/puria_graph" target="_blank" rel="noopener"><span class="icon"><i class="fa-brands fa-telegram"></i></span><span><strong>کانال تلگرام</strong><span>puria_graph</span></span></a>
+   </div>
+  </div>
+ </header>
+
+ <main id="portfolio">
+  <section class="section">
+   <div class="head"><div><h2><i class="fa-solid fa-layer-group"></i> نمونه‌کارها</h2><p>دسته‌بندی پروژه‌های طراحی پوریا گراف</p></div></div>
+   <div class="categories" id="categories"></div>
+  </section>
+ </main>
+
+ <footer>© 2026 پوریا گراف | تمامی حقوق محفوظ است</footer>
+</div>
+
+<nav class="bottom-nav" aria-label="ناوبری اصلی">
+ <button class="active" data-target="home"><i class="fa-solid fa-house"></i><span>صفحه اصلی</span></button>
+ <button data-target="portfolio"><i class="fa-solid fa-images"></i><span>نمونه‌کارها</span></button>
+ <button id="share"><i class="fa-solid fa-share-nodes"></i><span>اشتراک‌گذاری</span></button>
+</nav>
+
+<div class="modal" id="modal">
+ <div class="gallery">
+  <div class="gallery-head">
+   <strong id="galleryTitle">نمونه‌کارها</strong>
+   <div style="display:flex;align-items:center;gap:9px"><span class="count" id="count"></span><button class="close" id="close"><i class="fa-solid fa-xmark"></i></button></div>
+  </div>
+  <div class="main-image-wrap">
+   <button class="nav prev" id="prev"><i class="fa-solid fa-chevron-right"></i></button>
+   <img class="main-image" id="mainImage" src="" alt="">
+   <button class="nav next" id="next"><i class="fa-solid fa-chevron-left"></i></button>
+  </div>
+  <div class="thumbs" id="thumbs"></div>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const categories=[
+ {title:"طراحی بنر سایت",prefix:"sete",count:15},
+ {title:"طراحی کارت ویزیت",prefix:"card",count:10},
+ {title:"طراحی پوستر تبلیغاتی",prefix:"taba",count:17},
+ {title:"طراحی کاور محصول",prefix:"masa",count:19},
+ {title:"طراحی کاور دوره",prefix:"caver",count:10},
+ {title:"مجله و منو رستوران",prefix:"nana",count:2}
+];
+const path="portfolio/";
+const coverPath="portfolio/category-covers/";
+const categoryBox=document.getElementById("categories");
+categories.forEach((c,i)=>{
+ const card=document.createElement("button");
+ card.className="category";
+ card.innerHTML=`<img src="${coverPath}${c.prefix}.jpg" alt="${c.title}"><span class="category-arrow"><i class="fa-solid fa-chevron-left"></i></span><div class="category-info"><div class="category-title">${c.title}</div><div class="category-count"><i class="fa-solid fa-images"></i> ${c.count} نمونه‌کار</div></div>`;
+ card.addEventListener("click",()=>openGallery(i));
+ categoryBox.appendChild(card);
+});
+let currentCategory=0,current=0;
+const modal=document.getElementById("modal"),mainImage=document.getElementById("mainImage"),thumbs=document.getElementById("thumbs"),title=document.getElementById("galleryTitle"),count=document.getElementById("count");
+function files(c){return Array.from({length:c.count},(_,i)=>`${path}${c.prefix}${i+1}.jpg`)}
+function renderGallery(){
+ const c=categories[currentCategory],list=files(c);
+ title.textContent=c.title;count.textContent=`${current+1} / ${list.length}`;mainImage.src=list[current];mainImage.alt=c.title;
+ thumbs.innerHTML="";
+ list.forEach((src,i)=>{const b=document.createElement("button");b.className="thumb"+(i===current?" active":"");b.innerHTML=`<img src="${src}" alt="" loading="lazy">`;b.onclick=()=>{current=i;renderGallery()};thumbs.appendChild(b)});
+}
+function openGallery(i){currentCategory=i;current=0;modal.classList.add("open");document.body.style.overflow="hidden";renderGallery()}
+function closeGallery(){modal.classList.remove("open");document.body.style.overflow=""}
+document.getElementById("close").onclick=closeGallery;
+document.getElementById("prev").onclick=()=>{current=(current-1+categories[currentCategory].count)%categories[currentCategory].count;renderGallery()};
+document.getElementById("next").onclick=()=>{current=(current+1)%categories[currentCategory].count;renderGallery()};
+modal.addEventListener("click",e=>{if(e.target===modal)closeGallery()});
+document.addEventListener("keydown",e=>{if(!modal.classList.contains("open"))return;if(e.key==="Escape")closeGallery();if(e.key==="ArrowRight")document.getElementById("prev").click();if(e.key==="ArrowLeft")document.getElementById("next").click()});
+let sx=0;mainImage.addEventListener("touchstart",e=>sx=e.changedTouches[0].screenX,{passive:true});mainImage.addEventListener("touchend",e=>{let d=sx-e.changedTouches[0].screenX;if(Math.abs(d)>45)(d>0?document.getElementById("next"):document.getElementById("prev")).click()},{passive:true});
+
+document.querySelectorAll(".bottom-nav button[data-target]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.target).scrollIntoView({behavior:"smooth"}));
+const toast=document.getElementById("toast");function showToast(t){toast.textContent=t;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800)}
+document.getElementById("share").onclick=async()=>{try{if(navigator.share)await navigator.share({title:"پوریا گراف",text:"نمونه‌کارهای پوریا گراف",url:location.href});else{await navigator.clipboard.writeText(location.href);showToast("لینک صفحه کپی شد")}}catch(e){}};
+
+</script>
+</body>
+</html>
