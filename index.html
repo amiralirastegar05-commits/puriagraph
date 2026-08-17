@@ -36,7 +36,7 @@ body{min-height:100vh;background:
  radial-gradient(circle at 100% 45%,rgba(217,174,85,.05),transparent 30%),var(--bg);
  color:var(--text);font-family:"Yekan New Face",Tahoma,Arial,sans-serif;overflow-x:hidden}
 button,a{-webkit-tap-highlight-color:transparent}
-button{font-family:inherit}
+button{font-family:"Yekan New Face",Tahoma,Arial,sans-serif}
 .page{width:min(100% - 24px,760px);margin:auto;padding:18px 0 105px}
 .top{display:flex;justify-content:flex-end;height:38px}
 .hero{text-align:center;padding:28px 0 24px;animation:up .65s ease both}
@@ -77,6 +77,11 @@ button{font-family:inherit}
 footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid var(--line);color:#68645d;font-size:9px}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media(max-width:600px){.page{width:calc(100% - 22px)}.logo-wrap{width:100px;height:100px}.categories{gap:9px}.category{min-height:155px}.contact-grid{gap:8px}.main-image{max-height:68vh}}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-height:78vh;overflow-y:auto;padding:2px;scrollbar-width:thin}
+.portfolio-item{width:100%;padding:0;border:1px solid rgba(244,212,135,.13);border-radius:13px;overflow:hidden;background:#0d0c0a;cursor:pointer}
+.portfolio-item img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:600px){.portfolio-grid{gap:8px;max-height:78vh}.portfolio-item{border-radius:10px}}
 </style>
 </head>
 <body>
@@ -151,24 +156,49 @@ categories.forEach((c,i)=>{
  card.addEventListener("click",()=>openGallery(i));
  categoryBox.appendChild(card);
 });
-let currentCategory=0,current=0;
-const modal=document.getElementById("modal"),mainImage=document.getElementById("mainImage"),thumbs=document.getElementById("thumbs"),title=document.getElementById("galleryTitle"),count=document.getElementById("count");
+let currentCategory=0;
+const modal=document.getElementById("modal"),portfolioGrid=document.getElementById("portfolioGrid"),title=document.getElementById("galleryTitle"),count=document.getElementById("count");
+
 function files(c){return Array.from({length:c.count},(_,i)=>`${path}${c.prefix}${i+1}.jpg`)}
+
 function renderGallery(){
  const c=categories[currentCategory],list=files(c);
- title.textContent=c.title;count.textContent=`${current+1} / ${list.length}`;mainImage.src=list[current];mainImage.alt=c.title;
- thumbs.innerHTML="";
- list.forEach((src,i)=>{const b=document.createElement("button");b.className="thumb"+(i===current?" active":"");b.innerHTML=`<img src="${src}" alt="" loading="lazy">`;b.onclick=()=>{current=i;renderGallery()};thumbs.appendChild(b)});
+ title.textContent=c.title;
+ count.textContent=`${list.length} نمونه‌کار`;
+ portfolioGrid.innerHTML="";
+ list.forEach((src,i)=>{
+  const b=document.createElement("button");
+  b.className="portfolio-item";
+  b.type="button";
+  b.innerHTML=`<img src="${src}" alt="${c.title} - ${i+1}" loading="lazy">`;
+  b.onclick=()=>openViewer(src,c.title,i+1);
+  portfolioGrid.appendChild(b);
+ });
 }
-function openGallery(i){currentCategory=i;current=0;modal.classList.add("open");document.body.style.overflow="hidden";renderGallery()}
-function closeGallery(){modal.classList.remove("open");document.body.style.overflow=""}
-document.getElementById("close").onclick=closeGallery;
-document.getElementById("prev").onclick=()=>{current=(current-1+categories[currentCategory].count)%categories[currentCategory].count;renderGallery()};
-document.getElementById("next").onclick=()=>{current=(current+1)%categories[currentCategory].count;renderGallery()};
-modal.addEventListener("click",e=>{if(e.target===modal)closeGallery()});
-document.addEventListener("keydown",e=>{if(!modal.classList.contains("open"))return;if(e.key==="Escape")closeGallery();if(e.key==="ArrowRight")document.getElementById("prev").click();if(e.key==="ArrowLeft")document.getElementById("next").click()});
-let sx=0;mainImage.addEventListener("touchstart",e=>sx=e.changedTouches[0].screenX,{passive:true});mainImage.addEventListener("touchend",e=>{let d=sx-e.changedTouches[0].screenX;if(Math.abs(d)>45)(d>0?document.getElementById("next"):document.getElementById("prev")).click()},{passive:true});
 
+function openGallery(i){currentCategory=i;modal.classList.add("open");document.body.style.overflow="hidden";renderGallery()}
+function closeGallery(){modal.classList.remove("open");document.body.style.overflow=""}
+
+function openViewer(src,alt,n){
+ const viewer=document.createElement("div");
+ viewer.className="modal open";
+ viewer.style.zIndex="1100";
+ viewer.innerHTML=`<div class="gallery"><div class="gallery-head"><strong>${alt}</strong><div style="display:flex;align-items:center;gap:9px"><span class="count">${n}</span><button class="close viewer-close"><i class="fa-solid fa-xmark"></i></button></div></div><div style="display:flex;justify-content:center;align-items:center;min-height:0"><img class="main-image" src="${src}" alt="${alt}"></div></div>`;
+ document.body.appendChild(viewer);
+ const close=()=>viewer.remove();
+ viewer.querySelector(".viewer-close").onclick=close;
+ viewer.onclick=e=>{if(e.target===viewer)close()};
+}
+
+document.getElementById("close").onclick=closeGallery;
+modal.addEventListener("click",e=>{if(e.target===modal)closeGallery()});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  const viewer=document.querySelector('.modal[style*="z-index: 1100"]');
+  if(viewer){viewer.remove();return}
+  if(modal.classList.contains("open"))closeGallery();
+ }
+});
 document.querySelectorAll(".bottom-nav button[data-target]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.target).scrollIntoView({behavior:"smooth"}));
 const toast=document.getElementById("toast");function showToast(t){toast.textContent=t;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800)}
 document.getElementById("share").onclick=async()=>{try{if(navigator.share)await navigator.share({title:"پوریا گراف",text:"نمونه‌کارهای پوریا گراف",url:location.href});else{await navigator.clipboard.writeText(location.href);showToast("لینک صفحه کپی شد")}}catch(e){}};
