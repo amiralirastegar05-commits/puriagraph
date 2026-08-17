@@ -82,6 +82,16 @@ footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid v
 .portfolio-item{width:100%;padding:0;border:1px solid rgba(244,212,135,.13);border-radius:13px;overflow:hidden;background:#0d0c0a;cursor:pointer}
 .portfolio-item img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:600px){.portfolio-grid{gap:8px;max-height:78vh}.portfolio-item{border-radius:10px}}
+
+.gallery-page{width:min(100%,760px);height:94vh;display:flex;flex-direction:column;gap:12px}
+.gallery-page .gallery-head{flex:0 0 auto;position:sticky;top:0;z-index:5;padding:4px 0 10px;background:rgba(3,3,3,.94);backdrop-filter:blur(10px)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;overflow-y:auto;padding:2px 2px 28px;scrollbar-width:thin}
+.portfolio-item{width:100%;padding:0;border:1px solid rgba(244,212,135,.14);border-radius:14px;overflow:hidden;background:#0d0c0a;cursor:pointer}
+.portfolio-item img{display:block;width:100%;height:auto;object-fit:contain}
+.viewer-page .main-image{max-width:calc(100vw - 40px);max-height:70vh;object-fit:contain;border-radius:14px}
+.download-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:118px;padding:10px 15px;border:1px solid rgba(244,212,135,.2);border-radius:12px;background:rgba(217,174,85,.10);color:var(--gold2);text-decoration:none;font-size:10px;font-family:"Yekan New Face",Tahoma,Arial,sans-serif;cursor:pointer}
+.download-btn:hover{background:rgba(217,174,85,.18)}
+@media(max-width:600px){.gallery-page{width:100%;height:94vh}.portfolio-grid{gap:8px;padding-bottom:24px}.portfolio-item{border-radius:10px}}
 </style>
 </head>
 <body>
@@ -122,17 +132,12 @@ footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid v
 </nav>
 
 <div class="modal" id="modal">
- <div class="gallery">
+ <div class="gallery-page">
   <div class="gallery-head">
    <strong id="galleryTitle">نمونه‌کارها</strong>
    <div style="display:flex;align-items:center;gap:9px"><span class="count" id="count"></span><button class="close" id="close"><i class="fa-solid fa-xmark"></i></button></div>
   </div>
-  <div class="main-image-wrap">
-   <button class="nav prev" id="prev"><i class="fa-solid fa-chevron-right"></i></button>
-   <img class="main-image" id="mainImage" src="" alt="">
-   <button class="nav next" id="next"><i class="fa-solid fa-chevron-left"></i></button>
-  </div>
-  <div class="thumbs" id="thumbs"></div>
+  <div class="portfolio-grid" id="portfolioGrid"></div>
  </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -157,7 +162,10 @@ categories.forEach((c,i)=>{
  categoryBox.appendChild(card);
 });
 let currentCategory=0;
-const modal=document.getElementById("modal"),portfolioGrid=document.getElementById("portfolioGrid"),title=document.getElementById("galleryTitle"),count=document.getElementById("count");
+const modal=document.getElementById("modal");
+const portfolioGrid=document.getElementById("portfolioGrid");
+const title=document.getElementById("galleryTitle");
+const count=document.getElementById("count");
 
 function files(c){return Array.from({length:c.count},(_,i)=>`${path}${c.prefix}${i+1}.jpg`)}
 
@@ -175,7 +183,6 @@ function renderGallery(){
   portfolioGrid.appendChild(b);
  });
 }
-
 function openGallery(i){currentCategory=i;modal.classList.add("open");document.body.style.overflow="hidden";renderGallery()}
 function closeGallery(){modal.classList.remove("open");document.body.style.overflow=""}
 
@@ -183,18 +190,31 @@ function openViewer(src,alt,n){
  const viewer=document.createElement("div");
  viewer.className="modal open";
  viewer.style.zIndex="1100";
- viewer.innerHTML=`<div class="gallery"><div class="gallery-head"><strong>${alt}</strong><div style="display:flex;align-items:center;gap:9px"><span class="count">${n}</span><button class="close viewer-close"><i class="fa-solid fa-xmark"></i></button></div></div><div style="display:flex;justify-content:center;align-items:center;min-height:0"><img class="main-image" src="${src}" alt="${alt}"></div></div>`;
+ viewer.innerHTML=`<div class="gallery-page viewer-page">
+  <div class="gallery-head"><strong>${alt}</strong><button class="close viewer-close"><i class="fa-solid fa-xmark"></i></button></div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0"><img class="main-image" src="${src}" alt="${alt}"></div>
+  <div style="display:flex;justify-content:center;gap:9px;flex-wrap:wrap;padding-bottom:8px">
+   <a class="download-btn" href="${src}" download><i class="fa-solid fa-download"></i> دانلود</a>
+   <button class="download-btn share-work"><i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری</button>
+  </div>
+ </div>`;
  document.body.appendChild(viewer);
  const close=()=>viewer.remove();
  viewer.querySelector(".viewer-close").onclick=close;
  viewer.onclick=e=>{if(e.target===viewer)close()};
+ viewer.querySelector(".share-work").onclick=async()=>{
+  try{
+   const url=new URL(src,location.href).href;
+   if(navigator.share) await navigator.share({title:alt,text:`${alt} - نمونه‌کار ${n}`,url});
+   else {await navigator.clipboard.writeText(url);showToast("لینک نمونه‌کار کپی شد")}
+  }catch(e){}
+ };
 }
-
 document.getElementById("close").onclick=closeGallery;
 modal.addEventListener("click",e=>{if(e.target===modal)closeGallery()});
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"){
-  const viewer=document.querySelector('.modal[style*="z-index: 1100"]');
+  const viewer=document.querySelector('.viewer-page')?.closest(".modal");
   if(viewer){viewer.remove();return}
   if(modal.classList.contains("open"))closeGallery();
  }
