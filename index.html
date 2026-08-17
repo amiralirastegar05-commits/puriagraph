@@ -57,11 +57,9 @@ button{font-family:inherit}
 .categories{display:grid;grid-template-columns:1fr 1fr;gap:11px}
 .category{position:relative;overflow:hidden;min-height:175px;border:1px solid var(--line);border-radius:21px;background:var(--surface);box-shadow:var(--shadow);cursor:pointer;text-align:right;transition:.3s}
 .category:hover{transform:translateY(-5px);border-color:rgba(244,212,135,.38)}
-.category img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;transition:.45s}
-.category:hover img{transform:scale(1.06);opacity:.58}
-.category:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,5,.96),rgba(5,5,5,.12) 75%)}
-.category-info{position:absolute;z-index:2;bottom:14px;right:14px;left:10px}
-.category-title{font-size:13px;font-weight:900}.category-count{font-size:9px;color:var(--gold2);margin-top:5px}
+.category img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:.45s}
+.category:hover img{transform:scale(1.035);opacity:1}
+.category:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,5,5,.10),rgba(5,5,5,0) 48%);pointer-events:none}
 .category-arrow{position:absolute;z-index:3;top:12px;left:12px;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.42);color:var(--gold2)}
 .modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:14px;background:rgba(3,3,3,.94);backdrop-filter:blur(16px)}
 .modal.open{display:flex}
@@ -78,7 +76,7 @@ button{font-family:inherit}
 .toast{position:fixed;z-index:2000;bottom:90px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--gold);color:#17130b;padding:10px 15px;border-radius:12px;font-size:10px;font-weight:900;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
 footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid var(--line);color:#68645d;font-size:9px}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media(max-width:600px){.page{width:calc(100% - 22px)}.logo-wrap{width:100px;height:100px}.categories{gap:9px}.category{min-height:155px}.category-title{font-size:11px}.contact-grid{gap:8px}.main-image{max-height:68vh}}
+@media(max-width:600px){.page{width:calc(100% - 22px)}.logo-wrap{width:100px;height:100px}.categories{gap:9px}.category{min-height:155px}.contact-grid{gap:8px}.main-image{max-height:68vh}}
 </style>
 </head>
 <body>
@@ -137,7 +135,7 @@ footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid v
 <script>
 const categories=[
  {title:"طراحی بنر سایت",prefix:"sete",count:15},
- {title:"طراحی کارت ویزیت",prefix:"card",count:10},
+ {title:"طراحی کارت ویزیت",prefix:"card",count:5},
  {title:"طراحی پوستر تبلیغاتی",prefix:"taba",count:17},
  {title:"طراحی کاور محصول",prefix:"masa",count:19},
  {title:"طراحی کاور دوره",prefix:"caver",count:10},
@@ -149,7 +147,7 @@ const categoryBox=document.getElementById("categories");
 categories.forEach((c,i)=>{
  const card=document.createElement("button");
  card.className="category";
- card.innerHTML=`<img src="${coverPath}${c.prefix}.jpg" alt="${c.title}"><span class="category-arrow"><i class="fa-solid fa-chevron-left"></i></span><div class="category-info"><div class="category-title">${c.title}</div><div class="category-count"><i class="fa-solid fa-images"></i> ${c.count} نمونه‌کار</div></div>`;
+ card.innerHTML=`<img src="${coverPath}${c.prefix}.jpg" alt="${c.title}"><span class="category-arrow"><i class="fa-solid fa-chevron-left"></i></span>`;
  card.addEventListener("click",()=>openGallery(i));
  categoryBox.appendChild(card);
 });
