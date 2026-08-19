@@ -10,14 +10,14 @@
 <title>پوریا گراف | طراحی گرافیک</title>
 <style>
 @font-face{
-  font-family:"Yekan New Face";
+  font-family:"PuriaYekan";
   src:url("fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
   font-weight:500;
   font-style:normal;
   font-display:swap;
 }
 @font-face{
-  font-family:"Yekan New Face";
+  font-family:"PuriaYekan";
   src:url("fonts/YekanNewFaceD1-Black.ttf") format("truetype");
   font-weight:900;
   font-style:normal;
@@ -34,9 +34,9 @@ html{scroll-behavior:smooth}
 body{min-height:100vh;background:
  radial-gradient(circle at 50% -10%,rgba(217,174,85,.15),transparent 34%),
  radial-gradient(circle at 100% 45%,rgba(217,174,85,.05),transparent 30%),var(--bg);
- color:var(--text);font-family:"Yekan New Face",Tahoma,Arial,sans-serif;overflow-x:hidden}
+ color:var(--text);font-family:"PuriaYekan",Tahoma,Arial,sans-serif;overflow-x:hidden}
 button,a{-webkit-tap-highlight-color:transparent}
-button{font-family:"Yekan New Face",Tahoma,Arial,sans-serif}
+button{font-family:"PuriaYekan",Tahoma,Arial,sans-serif}
 .page{width:min(100% - 24px,760px);margin:auto;padding:18px 0 105px}
 .top{display:flex;justify-content:flex-end;height:38px}
 .hero{text-align:center;padding:28px 0 24px;animation:up .65s ease both}
@@ -50,7 +50,7 @@ button{font-family:"Yekan New Face",Tahoma,Arial,sans-serif}
 .contact{min-height:62px;display:flex;align-items:center;gap:11px;padding:9px 11px;text-decoration:none;color:var(--text);border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:15px;transition:.25s}
 .contact:hover{transform:translateY(-3px);border-color:rgba(244,212,135,.4)}
 .icon{width:44px;height:44px;min-width:44px;border-radius:13px;background:rgba(217,174,85,.1);color:var(--gold2);display:grid;place-items:center;font-size:19px;box-shadow:inset 0 0 0 1px rgba(244,212,135,.05)}
-.contact strong{display:block;font-size:10px;line-height:1.4}.contact>span:last-child{display:block;color:var(--muted);font:9px Arial;margin-top:3px;direction:ltr;text-align:right}.contact>span:last-child strong{font-family:"Yekan New Face",Tahoma,Arial,sans-serif;color:var(--text);font-size:10px;direction:rtl;text-align:right}
+.contact strong{display:block;font-size:10px;line-height:1.4}.contact>span:last-child{display:block;color:var(--muted);font:9px Arial;margin-top:3px;direction:ltr;text-align:right}.contact>span:last-child strong{font-family:"PuriaYekan",Tahoma,Arial,sans-serif;color:var(--text);font-size:10px;direction:rtl;text-align:right}
 .section{margin-top:30px;animation:up .6s ease both}
 .head{display:flex;justify-content:space-between;align-items:end;margin:0 3px 13px}
 .head h2{font-size:18px;font-weight:900}.head p{font-size:10px;color:var(--muted);margin-top:5px}
@@ -138,7 +138,7 @@ footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid v
  color:var(--gold2);
  text-decoration:none;
  font-size:10px;
- font-family:"Yekan New Face",Tahoma,Arial,sans-serif;
+ font-family:"PuriaYekan",Tahoma,Arial,sans-serif;
  cursor:pointer;
 }
 .download-btn:hover{background:rgba(217,174,85,.18)}
@@ -147,6 +147,27 @@ footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid v
  .portfolio-grid{gap:8px;padding-bottom:24px}
  .portfolio-item{border-radius:10px}
 }
+
+@font-face{
+ font-family:"PuriaYekan";
+ src:url("./fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
+ font-weight:500;font-style:normal;font-display:swap;
+}
+@font-face{
+ font-family:"PuriaYekan";
+ src:url("./fonts/YekanNewFaceD1-Black.ttf") format("truetype");
+ font-weight:900;font-style:normal;font-display:swap;
+}
+html,body,button,a,input,textarea,select{
+ font-family:"PuriaYekan",Tahoma,Arial,sans-serif !important;
+}
+
+.viewer-page .viewer-actions{
+ margin-top:auto;padding-top:18px;padding-bottom:6px;
+ display:flex;justify-content:center;gap:9px;flex-wrap:wrap;flex:0 0 auto;
+}
+.viewer-page .main-image{max-height:68vh}
+@media(max-width:600px){.viewer-page .main-image{max-height:65vh}}
 </style>
 </head>
 <body>
@@ -238,7 +259,7 @@ function renderGallery(){
 
  list.forEach((src,i)=>{
   const b=document.createElement("button");
-  b.className="portfolio-item";
+  b.className="portfolio-item"+(c.prefix==="sete"?" banner-site":"");
   b.type="button";
   b.innerHTML=`<img src="${src}" alt="${c.title} - ${i+1}" loading="lazy">`;
   b.addEventListener("click",()=>openViewer(src,c.title,i+1));
@@ -274,7 +295,7 @@ function openViewer(src,alt,n){
     <img class="main-image" src="${src}" alt="${alt}">
    </div>
 
-   <div style="display:flex;justify-content:center;gap:9px;flex-wrap:wrap;padding-bottom:8px">
+   <div class="viewer-actions">
     <a class="download-btn" href="${src}" download>
      <i class="fa-solid fa-download"></i> دانلود
     </a>
