@@ -9,20 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <title>پوریا گراف | طراحی گرافیک</title>
 <style>
-@font-face{
-  font-family:"PuriaYekan";
-  src:url("fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
-  font-weight:500;
-  font-style:normal;
-  font-display:swap;
-}
-@font-face{
-  font-family:"PuriaYekan";
-  src:url("fonts/YekanNewFaceD1-Black.ttf") format("truetype");
-  font-weight:900;
-  font-style:normal;
-  font-display:swap;
-}
+
 
 :root{
  --bg:#070707;--surface:#11100e;--surface2:#181613;--gold:#d9ae55;--gold2:#f4d487;
@@ -148,16 +135,7 @@ footer{text-align:center;margin-top:35px;padding-top:18px;border-top:1px solid v
  .portfolio-item{border-radius:10px}
 }
 
-@font-face{
- font-family:"PuriaYekan";
- src:url("./fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
- font-weight:500;font-style:normal;font-display:swap;
-}
-@font-face{
- font-family:"PuriaYekan";
- src:url("./fonts/YekanNewFaceD1-Black.ttf") format("truetype");
- font-weight:900;font-style:normal;font-display:swap;
-}
+
 html,body,button,a,input,textarea,select{
  font-family:"PuriaYekan",Tahoma,Arial,sans-serif !important;
 }
@@ -168,6 +146,28 @@ html,body,button,a,input,textarea,select{
 }
 .viewer-page .main-image{max-height:68vh}
 @media(max-width:600px){.viewer-page .main-image{max-height:65vh}}
+
+@font-face{font-family:"PuriaFont";src:url("./fonts/YekanNewFaceD1-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"PuriaFont";src:url("./fonts/YekanNewFaceD1-Black.ttf") format("truetype");font-weight:900;font-style:normal;font-display:swap}
+html,body,button,a,input,textarea,select{font-family:"PuriaFont",Tahoma,Arial,sans-serif!important}
+
+#modal .gallery-page{
+ width:min(100%,900px)!important;height:94vh!important;max-height:94vh!important;
+ display:block!important;overflow-y:auto!important;overflow-x:hidden!important;
+ box-sizing:border-box!important;padding:0 2px 30px!important;
+ -webkit-overflow-scrolling:touch;overscroll-behavior:contain
+}
+#modal .gallery-page .gallery-head{
+ position:sticky!important;top:0!important;z-index:20!important;
+ margin-bottom:12px!important;background:rgba(3,3,3,.97)!important;
+}
+#modal .portfolio-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:12px!important;width:100%!important;overflow:visible!important;min-height:0!important
+}
+#modal .portfolio-item{display:block!important;width:100%!important}
+#modal .portfolio-item img{display:block!important;width:100%!important;height:auto!important}
+#modal .viewer-page{overflow:hidden!important}
 </style>
 </head>
 <body>
