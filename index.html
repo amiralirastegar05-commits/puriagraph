@@ -348,5 +348,18 @@ const toast=document.getElementById("toast");function showToast(t){toast.textCon
 document.getElementById("share").onclick=async()=>{try{if(navigator.share)await navigator.share({title:"پوریا گراف",text:"نمونه‌کارهای پوریا گراف",url:location.href});else{await navigator.clipboard.writeText(location.href);showToast("لینک صفحه کپی شد")}}catch(e){}};
 
 </script>
+  <script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});
+  </script>
 </body>
 </html>
