@@ -2,1402 +2,1424 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080808">
 <meta name="description" content="پوریا گراف | طراحی گرافیک">
 
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <title>پوریا گراف | طراحی گرافیک</title>
 
 <style>
-
-:root{
- --bg:#070707;
- --surface:#11100e;
- --surface2:#181613;
- --gold:#d9ae55;
- --gold2:#f4d487;
- --text:#faf8f2;
- --muted:#9b968b;
- --line:rgba(244,212,135,.13);
- --shadow:0 18px 55px rgba(0,0,0,.38);
-}
-
-*{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
-
-html{
- scroll-behavior:smooth;
-}
-
-body{
- min-height:100vh;
- background:
- radial-gradient(circle at 50% -10%,rgba(217,174,85,.15),transparent 34%),
- radial-gradient(circle at 100% 45%,rgba(217,174,85,.05),transparent 30%),
- var(--bg);
- color:var(--text);
- font-family:"PuriaYekan",Tahoma,Arial,sans-serif;
- overflow-x:hidden;
-}
-
-button,a{
- -webkit-tap-highlight-color:transparent;
-}
-
-button{
- font-family:"PuriaYekan",Tahoma,Arial,sans-serif;
-}
-
-.page{
- width:min(100% - 24px,760px);
- margin:auto;
- padding:18px 0 105px;
-}
-
-.top{
- display:flex;
- justify-content:flex-end;
- height:38px;
-}
-
-.hero{
- text-align:center;
- padding:28px 0 24px;
- animation:up .65s ease both;
-}
-
-.logo-wrap{
- width:116px;
- height:116px;
- margin:auto;
- padding:3px;
- border-radius:34px;
- background:linear-gradient(135deg,var(--gold),#7e5c22,var(--gold2));
- box-shadow:0 15px 45px rgba(217,174,85,.18);
-}
-
-.logo{
- width:100%;
- height:100%;
- object-fit:cover;
- border-radius:31px;
- display:block;
-}
-
-.name{
- margin-top:17px;
- font-size:clamp(38px,9vw,58px);
- font-weight:900;
- letter-spacing:-2px;
- background:linear-gradient(135deg,var(--gold),var(--gold2));
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
-}
-
-.tag{
- margin-top:9px;
- color:var(--muted);
- font-size:12px;
-}
-
-.order-box{
- margin-top:23px;
- padding:18px;
- border:1px solid var(--line);
- border-radius:23px;
- background:linear-gradient(145deg,rgba(217,174,85,.09),rgba(17,16,14,.9));
- box-shadow:var(--shadow);
- text-align:right;
-}
-
-.order-title{
- font-size:16px;
- font-weight:900;
-}
-
-.order-sub{
- font-size:10px;
- color:var(--muted);
- margin-top:6px;
-}
-
-.contact-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:9px;
- margin-top:13px;
-}
-
-.contact{
- min-height:62px;
- display:flex;
- align-items:center;
- gap:11px;
- padding:9px 11px;
- text-decoration:none;
- color:var(--text);
- border:1px solid var(--line);
- background:rgba(255,255,255,.025);
- border-radius:15px;
- transition:.25s;
-}
-
-.contact:hover{
- transform:translateY(-3px);
- border-color:rgba(244,212,135,.4);
-}
-
-.icon{
- width:44px;
- height:44px;
- min-width:44px;
- border-radius:13px;
- background:rgba(217,174,85,.1);
- color:var(--gold2);
- display:grid;
- place-items:center;
- font-size:19px;
- box-shadow:inset 0 0 0 1px rgba(244,212,135,.05);
-}
-
-.contact strong{
- display:block;
- font-size:10px;
- line-height:1.4;
-}
-
-.contact>span:last-child{
- display:block;
- color:var(--muted);
- font:9px Arial;
- margin-top:3px;
- direction:ltr;
- text-align:right;
-}
-
-.contact>span:last-child strong{
- font-family:"PuriaYekan",Tahoma,Arial,sans-serif;
- color:var(--text);
- font-size:10px;
- direction:rtl;
- text-align:right;
-}
-
-.section{
- margin-top:30px;
- animation:up .6s ease both;
-}
-
-.head{
- display:flex;
- justify-content:space-between;
- align-items:end;
- margin:0 3px 13px;
-}
-
-.head h2{
- font-size:18px;
- font-weight:900;
-}
-
-.head p{
- font-size:10px;
- color:var(--muted);
- margin-top:5px;
-}
-
-.categories{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:11px;
-}
-
-.category{
- position:relative;
- overflow:hidden;
- min-height:175px;
- border:1px solid var(--line);
- border-radius:21px;
- background:var(--surface);
- box-shadow:var(--shadow);
- cursor:pointer;
- text-align:right;
- transition:.3s;
-
- /* جلوگیری از انتخاب و Drag */
- user-select:none;
- -webkit-user-select:none;
- -webkit-touch-callout:none;
-}
-
-.category:hover{
- transform:translateY(-5px);
- border-color:rgba(244,212,135,.38);
-}
-
-.category img{
- position:absolute;
- inset:0;
- width:100%;
- height:100%;
- object-fit:cover;
- opacity:1;
- transition:.45s;
-
- user-select:none;
- -webkit-user-select:none;
- -webkit-user-drag:none;
- -webkit-touch-callout:none;
- pointer-events:none;
-}
-
-.category:hover img{
- transform:scale(1.035);
- opacity:1;
-}
-
-.category:after{
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(0deg,rgba(5,5,5,.10),rgba(5,5,5,0) 48%);
- pointer-events:none;
-}
-
-.category-arrow{
- position:absolute;
- z-index:3;
- top:12px;
- left:12px;
- width:29px;
- height:29px;
- border-radius:50%;
- display:grid;
- place-items:center;
- background:rgba(0,0,0,.42);
- color:var(--gold2);
-}
-
-.modal{
- position:fixed;
- inset:0;
- z-index:1000;
- display:none;
- align-items:center;
- justify-content:center;
- padding:14px;
- background:rgba(3,3,3,.94);
- backdrop-filter:blur(16px);
-}
-
-.modal.open{
- display:flex;
-}
-
-.gallery{
- width:min(920px,100%);
- max-height:94vh;
- display:flex;
- flex-direction:column;
- gap:11px;
-}
-
-.gallery-head{
- display:flex;
- align-items:center;
- justify-content:space-between;
-}
-
-.gallery-head strong{
- font-size:15px;
-}
-
-.count{
- font:10px Arial;
- color:#aaa;
- direction:ltr;
-}
-
-.close{
- width:39px;
- height:39px;
- border:0;
- border-radius:50%;
- background:rgba(255,255,255,.09);
- color:#fff;
- font-size:20px;
- cursor:pointer;
-}
-
-.main-image-wrap{
- position:relative;
- display:flex;
- justify-content:center;
- align-items:center;
- min-height:0;
-}
-
-.main-image{
- max-width:calc(100vw - 40px);
- max-height:72vh;
- object-fit:contain;
- border-radius:14px;
-
- /* محافظت تصویر */
- user-select:none;
- -webkit-user-select:none;
- -webkit-user-drag:none;
- -webkit-touch-callout:none;
- pointer-events:none;
-}
-
-.nav{
- position:absolute;
- top:50%;
- transform:translateY(-50%);
- width:43px;
- height:43px;
- border:1px solid rgba(255,255,255,.15);
- border-radius:50%;
- background:rgba(0,0,0,.55);
- color:#fff;
- cursor:pointer;
- font-size:21px;
-}
-
-.prev{
- right:5px;
-}
-
-.next{
- left:5px;
-}
-
-.thumbs{
- display:flex;
- gap:7px;
- overflow:auto;
- scrollbar-width:none;
-}
-
-.thumbs::-webkit-scrollbar{
- display:none;
-}
-
-.thumb{
- flex:0 0 55px;
- height:55px;
- padding:0;
- border:1px solid transparent;
- border-radius:9px;
- overflow:hidden;
- opacity:.48;
- cursor:pointer;
- background:none;
-}
-
-.thumb.active{
- opacity:1;
- border-color:var(--gold);
+/* ============================================================
+   ROOT & VARIABLES
+============================================================ */
+:root {
+    --bg: #070707;
+    --bg-2: #0d0c0a;
+    --card: rgba(255,255,255,.045);
+    --card-hover: rgba(255,255,255,.08);
+    --border: rgba(244,212,135,.12);
+    --border-hover: rgba(244,212,135,.35);
+    --text: #faf8f2;
+    --muted: #9b968b;
+    --gold: #d9ae55;
+    --gold2: #f4d487;
+    --shadow: 0 25px 80px rgba(0,0,0,.45);
+    --radius: 24px;
+    --transition: .3s ease;
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+body {
+    font-family: "Vazirmatn", Tahoma, sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(217,174,85,.10), transparent 30%),
+        radial-gradient(circle at 80% 60%, rgba(217,174,85,.05), transparent 35%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(255,255,255,.008) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.008) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; }
+img { -webkit-user-drag:none; user-drag:none; }
+
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+/* ============================================================
+   REVEAL
+============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .7s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+header {
+    position: fixed;
+    top: 18px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: none;
+}
+.topbar {
+    width: min(1100px, 92%);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: auto;
+}
+.brand-mini {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: rgba(10,10,10,.7);
+    backdrop-filter: blur(18px);
+    border-radius: 50px;
+}
+.brand-mini img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.brand-mini span {
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.menu-btn {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: rgba(10,10,10,.7);
+    backdrop-filter: blur(18px);
+    color: var(--text);
+    font-size: 20px;
+    transition: var(--transition);
+}
+.menu-btn:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    color: var(--gold2);
+}
+
+/* ============================================================
+   DRAWER
+============================================================ */
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    backdrop-filter: blur(5px);
+    z-index: 1500;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+.drawer-overlay.active { opacity:1; visibility:visible; }
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -360px;
+    width: min(360px, 88%);
+    height: 100%;
+    z-index: 1600;
+    background: rgba(12,11,9,.97);
+    backdrop-filter: blur(25px);
+    border-left: 1px solid var(--border);
+    padding: 25px;
+    transition: .4s cubic-bezier(.77,0,.18,1);
+    overflow-y: auto;
+}
+.drawer.active { right:0; }
+
+.drawer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+.drawer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 20px;
+}
+.drawer-logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.close-btn {
+    border:0;
+    background:transparent;
+    color:#aaa;
+    font-size:25px;
+}
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+.drawer-links a,
+.drawer-links button {
+    border: 1px solid transparent;
+    background: transparent;
+    color: #ddd;
+    text-align: right;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 15px;
+    transition: var(--transition);
+    width: 100%;
+}
+.drawer-links a:hover,
+.drawer-links button:hover {
+    background: rgba(217,174,85,.08);
+    border-color: rgba(217,174,85,.15);
+    color: var(--gold2);
+}
+.drawer-links i {
+    width: 28px;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 0 80px;
+}
+.hero-content { max-width:850px; }
+
+.hero-logo {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 32px;
+    border: 1px solid rgba(217,174,85,.25);
+    box-shadow: 0 0 60px rgba(217,174,85,.14), var(--shadow);
+    margin-bottom: 25px;
+    animation: floating 5s ease-in-out infinite;
+}
+@keyframes floating {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-9px); }
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border: 1px solid rgba(217,174,85,.2);
+    background: rgba(217,174,85,.06);
+    color: var(--gold2);
+    border-radius: 50px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--gold2);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold2);
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 78px);
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 18px;
+    letter-spacing: -3px;
+}
+.gradient-text {
+    background: linear-gradient(135deg, var(--gold), var(--gold2), #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200%;
+    animation: gradientMove 5s linear infinite;
+}
+@keyframes gradientMove {
+    0% { background-position:0%; }
+    100% { background-position:200%; }
+}
+
+.job {
+    color: var(--gold2);
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 22px;
+}
+.hero h2 {
+    font-size: clamp(25px, 5vw, 43px);
+    line-height: 1.5;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+.hero-description {
+    max-width: 650px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 2;
+    font-size: 15px;
+}
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.btn {
+    border: 1px solid var(--border);
+    padding: 13px 21px;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: var(--transition);
+    font-size: 14px;
+    background: rgba(255,255,255,.04);
+    color: var(--text);
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: #15100a;
+    border-color: var(--gold);
+    font-weight: 800;
+    box-shadow: 0 10px 35px rgba(217,174,85,.18);
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 45px rgba(217,174,85,.3);
+}
+.btn-secondary:hover {
+    border-color: var(--border-hover);
+    color: var(--gold2);
+    transform: translateY(-3px);
+}
+
+.socials {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.social-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.04);
+    color: #bbb;
+    transition: var(--transition);
+}
+.social-icon:hover {
+    color: var(--gold2);
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+}
+
+/* ============================================================
+   SECTIONS
+============================================================ */
+section { padding: 90px 0; }
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+.section-title span {
+    color: var(--gold2);
+    font-size: 13px;
+    font-weight: 700;
+}
+.section-title h2 {
+    font-size: clamp(28px, 5vw, 42px);
+    margin-top: 7px;
+}
+.section-title p {
+    color: var(--muted);
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.glass {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+.glass:hover {
+    border-color: var(--border-hover);
+}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about-card {
+    padding: 35px;
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 25px;
+    align-items: center;
+}
+.about-icon {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    color: var(--gold2);
+    font-size: 35px;
+    background: rgba(217,174,85,.08);
+    border: 1px solid rgba(217,174,85,.13);
+}
+.about-card h3 { margin-bottom: 8px; }
+.about-card p {
+    color: var(--muted);
+    line-height: 2;
+    font-size: 14px;
+}
+
+/* ============================================================
+   PORTFOLIO CATEGORIES
+============================================================ */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.category-card {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-hover);
+}
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .6s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+    user-select: none;
+}
+.category-card:hover img { transform:scale(1.05); }
+.category-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.7), transparent 50%);
+    pointer-events: none;
+}
+.category-label {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    left: 18px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.category-label span {
+    font-weight: 700;
+    font-size: 14px;
+    text-shadow: 0 2px 15px rgba(0,0,0,.8);
+}
+.category-label i {
+    font-size: 18px;
+    color: var(--gold2);
+    background: rgba(0,0,0,.4);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+/* ============================================================
+   STATS
+============================================================ */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 40px;
+}
+.stat {
+    padding: 28px 15px;
+    text-align: center;
+}
+.stat i {
+    color: var(--gold2);
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+.stat strong {
+    display: block;
+    font-size: 27px;
+    margin-bottom: 4px;
+}
+.stat span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ============================================================
+   ORDER
+============================================================ */
+.order-card {
+    text-align: center;
+    padding: 45px 25px;
+}
+.order-card h2 {
+    font-size: clamp(25px, 5vw, 38px);
+    margin-bottom: 12px;
+}
+.order-card p {
+    color: var(--muted);
+    line-height: 2;
+    max-width: 600px;
+    margin: auto;
+}
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+.contact-btn { min-width:170px; }
+
+/* ============================================================
+   SOCIAL GRID
+============================================================ */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.social-card {
+    padding: 25px;
+    text-align: center;
+    transition: var(--transition);
+}
+.social-card:hover {
+    transform: translateY(-5px);
+    background: var(--card-hover);
+}
+.social-card i {
+    font-size: 28px;
+    color: var(--gold2);
+    margin-bottom: 12px;
+}
+.social-card h3 { font-size:16px; margin-bottom:5px; }
+.social-card p { color:var(--muted); font-size:12px; }
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq-list { display:flex; flex-direction:column; gap:10px; }
+.faq-item { overflow:hidden; }
+.faq-question {
+    width:100%;
+    padding:19px;
+    border:0;
+    background:transparent;
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    text-align:right;
+    font-size:14px;
+}
+.faq-question i { transition:.3s; color:var(--gold2); }
+.faq-answer {
+    max-height:0;
+    overflow:hidden;
+    transition:.35s;
+}
+.faq-answer p {
+    padding:0 19px 19px;
+    color:var(--muted);
+    line-height:2;
+    font-size:13px;
+}
+.faq-item.active .faq-answer { max-height:250px; }
+.faq-item.active .faq-question i { transform:rotate(180deg); }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+    padding: 55px 0 120px;
+    border-top: 1px solid rgba(255,255,255,.06);
+    margin-top: 50px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 35px;
+}
+.footer-brand {
+    color: var(--muted);
+    line-height: 2;
+    font-size: 13px;
+    max-width: 360px;
+}
+.footer-brand h3 {
+    color: var(--text);
+    font-size: 22px;
+    margin-bottom:10px;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+footer h4 { margin-bottom:15px; }
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    color: var(--muted);
+    font-size: 13px;
+}
+.footer-links a:hover { color: var(--gold2); }
+.footer-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.copyright {
+    text-align: center;
+    color: #666;
+    border-top: 1px solid rgba(255,255,255,.06);
+    margin-top: 40px;
+    padding-top: 25px;
+    font-size: 12px;
+}
+
+/* ============================================================
+   FLOATING NAV
+============================================================ */
+.floating-nav {
+    position: fixed;
+    z-index: 1200;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px;
+    border: 1px solid var(--border);
+    background: rgba(10,10,10,.8);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,.5);
+}
+.floating-nav button {
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 14px;
+    color: #aaa;
+    background: transparent;
+    cursor: pointer;
+    transition: .25s;
+    font-size: 16px;
+}
+.floating-nav button:hover {
+    color: #111;
+    background: var(--gold);
+}
+.language-btn {
+    font-weight: 800;
+    font-size: 12px !important;
+}
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+.back-top {
+    position: fixed;
+    z-index: 1100;
+    left: 20px;
+    bottom: 25px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(10,10,10,.8);
+    color: var(--text);
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: .3s;
+}
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.back-top:hover {
+    color: var(--gold2);
+    border-color: var(--border-hover);
+}
+
+/* ============================================================
+   MODALS
+============================================================ */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .3s;
+}
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.modal-content {
+    width: min(800px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    background: rgba(16,15,12,.96);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.7);
+    transform: scale(.94) translateY(15px);
+    transition: .3s;
+}
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+.modal-close {
+    position: absolute;
+    z-index: 5;
+    top: 15px;
+    left: 15px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,.5);
+    color: var(--text);
+    border-radius: 13px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+.modal-close:hover { color: var(--gold2); }
+
+/* --- TEXT MODAL --- */
+.text-modal { padding: 40px 30px 30px; }
+.text-modal h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.text-modal p {
+    color: var(--muted);
+    line-height: 2.1;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.highlight {
+    color: var(--gold2);
+    font-weight: 700;
+}
+
+/* --- GALLERY MODAL --- */
+.gallery-modal .modal-content {
+    background: #080807;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px 10px;
+    flex-shrink: 0;
+}
+.gallery-header h3 {
+    font-size: 18px;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 0 20px 25px;
+    overflow-y: auto;          /* <-- اینجا اسکرول رو فعال می‌کنه */
+    max-height: calc(90vh - 80px);
+    flex: 1 1 auto;
+}
+.gallery-grid .work-item {
+    aspect-ratio: 1/1;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: .25s;
+}
+.gallery-grid .work-item:hover {
+    border-color: var(--border-hover);
+    transform: scale(1.02);
+}
+.gallery-grid .work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* --- VIEWER MODAL --- */
+.viewer-modal .modal-content {
+    background: #080807;
+    max-width: 900px;
+}
+.viewer-image {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+    padding: 10px;
+    pointer-events: none;
+    user-select: none;
+}
+.viewer-actions {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width:800px) {
+    .about-card { grid-template-columns:70px 1fr; }
+    .about-icon { width:70px; height:70px; font-size:27px; }
+    .about-card .btn { grid-column:1/-1; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .footer-brand { grid-column:1/-1; }
+}
+
+@media (max-width:600px) {
+    section { padding:65px 0; }
+    .hero { padding-top:120px; }
+    .hero-logo { width:95px; height:95px; }
+    .hero h1 { letter-spacing:-2px; }
+    .hero h2 { font-size:25px; }
+    .hero-description { font-size:13px; }
+    .categories-grid { gap:10px; }
+    .category-card { aspect-ratio:3/2; }
+    .stats { grid-template-columns:1fr; }
+    .social-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr; }
+    .gallery-grid { grid-template-columns:repeat(2,1fr); padding:0 12px 15px; }
+    .floating-nav { bottom:12px; }
+    .floating-nav button { width:42px; height:42px; }
+    .back-top { bottom:80px; }
+    .drawer { width:88%; }
 }
-
-.thumb img{
- width:100%;
- height:100%;
- object-fit:cover;
-
- user-select:none;
- -webkit-user-select:none;
- -webkit-user-drag:none;
- -webkit-touch-callout:none;
- pointer-events:none;
-}
-
-.bottom-nav{
- position:fixed;
- z-index:900;
- bottom:14px;
- left:50%;
- transform:translateX(-50%);
- width:min(calc(100% - 28px),500px);
- padding:7px;
- border:1px solid rgba(244,212,135,.2);
- border-radius:23px;
- background:rgba(24,22,19,.76);
- backdrop-filter:blur(18px);
- box-shadow:0 15px 50px rgba(0,0,0,.55);
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:5px;
-}
-
-.bottom-nav button{
- border:0;
- background:transparent;
- color:#8f8a7f;
- border-radius:17px;
- min-height:50px;
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- gap:4px;
- cursor:pointer;
- font-size:9px;
- transition:.2s;
-}
-
-.bottom-nav button i{
- font-size:17px;
-}
-
-.bottom-nav button.active,
-.bottom-nav button:hover{
- color:var(--gold2);
- background:rgba(217,174,85,.09);
-}
-
-.toast{
- position:fixed;
- z-index:2000;
- bottom:90px;
- left:50%;
- transform:translate(-50%,15px);
- opacity:0;
- pointer-events:none;
- background:var(--gold);
- color:#17130b;
- padding:10px 15px;
- border-radius:12px;
- font-size:10px;
- font-weight:900;
- transition:.25s;
-}
-
-.toast.show{
- opacity:1;
- transform:translate(-50%,0);
-}
-
-footer{
- text-align:center;
- margin-top:35px;
- padding-top:18px;
- border-top:1px solid var(--line);
- color:#68645d;
- font-size:9px;
-}
-
-@keyframes up{
- from{
-  opacity:0;
-  transform:translateY(14px);
- }
- to{
-  opacity:1;
-  transform:none;
- }
-}
-
-@media(max-width:600px){
-
- .page{
-  width:calc(100% - 22px);
- }
-
- .logo-wrap{
-  width:100px;
-  height:100px;
- }
-
- .categories{
-  gap:9px;
- }
-
- .category{
-  min-height:155px;
- }
-
- .contact-grid{
-  gap:8px;
- }
-
- .main-image{
-  max-height:68vh;
- }
-
-}
-
-.portfolio-item{
- border-radius:10px;
-}
-
-.gallery-page{
- width:min(100%,760px);
- height:94vh;
- display:flex;
- flex-direction:column;
- gap:12px;
-}
-
-.gallery-page .gallery-head{
- flex:0 0 auto;
- position:sticky;
- top:0;
- z-index:5;
- padding:4px 0 10px;
- background:rgba(3,3,3,.94);
- backdrop-filter:blur(10px);
-}
-
-.portfolio-grid{
- display:grid;
- grid-template-columns:repeat(2,minmax(0,1fr));
- gap:12px;
- overflow-y:auto;
- padding:2px 2px 28px;
- scrollbar-width:thin;
-}
-
-.portfolio-item{
- width:100%;
- padding:0;
- border:1px solid rgba(244,212,135,.14);
- border-radius:14px;
- overflow:hidden;
- background:#0d0c0a;
- cursor:pointer;
-
- /* جلوگیری از انتخاب */
- user-select:none;
- -webkit-user-select:none;
- -webkit-touch-callout:none;
-}
-
-.portfolio-item img{
- display:block;
- width:100%;
- height:auto;
- object-fit:contain;
-
- user-select:none;
- -webkit-user-select:none;
- -webkit-user-drag:none;
- -webkit-touch-callout:none;
- pointer-events:none;
-}
-
-.viewer-page .main-image{
- max-width:calc(100vw - 40px);
- max-height:70vh;
- object-fit:contain;
- border-radius:14px;
-
- user-select:none;
- -webkit-user-select:none;
- -webkit-user-drag:none;
- -webkit-touch-callout:none;
- pointer-events:none;
-}
-
-.download-btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:7px;
- min-width:118px;
- padding:10px 15px;
- border:1px solid rgba(244,212,135,.2);
- border-radius:12px;
- background:rgba(217,174,85,.10);
- color:var(--gold2);
- text-decoration:none;
- font-size:10px;
- font-family:"PuriaYekan",Tahoma,Arial,sans-serif;
- cursor:pointer;
-}
-
-.download-btn:hover{
- background:rgba(217,174,85,.18);
-}
-
-@media(max-width:600px){
-
- .gallery-page{
-  width:100%;
-  height:94vh;
- }
-
- .portfolio-grid{
-  gap:8px;
-  padding-bottom:24px;
- }
-
- .portfolio-item{
-  border-radius:10px;
- }
-
-}
-
-html,body,button,a,input,textarea,select{
- font-family:"PuriaYekan",Tahoma,Arial,sans-serif !important;
-}
-
-.viewer-page .viewer-actions{
- margin-top:auto;
- padding-top:18px;
- padding-bottom:6px;
- display:flex;
- justify-content:center;
- gap:9px;
- flex-wrap:wrap;
- flex:0 0 auto;
-}
-
-.viewer-page .main-image{
- max-height:68vh;
-}
-
-@media(max-width:600px){
- .viewer-page .main-image{
-  max-height:65vh;
- }
-}
-
-@font-face{
- font-family:"PuriaFont";
- src:url("./fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
- font-weight:500;
- font-style:normal;
- font-display:swap;
-}
-
-@font-face{
- font-family:"PuriaFont";
- src:url("./fonts/YekanNewFaceD1-Black.ttf") format("truetype");
- font-weight:900;
- font-style:normal;
- font-display:swap;
-}
-
-html,body,button,a,input,textarea,select{
- font-family:"PuriaFont",Tahoma,Arial,sans-serif!important;
-}
-
-#modal .gallery-page{
- width:min(100%,900px)!important;
- height:94vh!important;
- max-height:94vh!important;
- display:block!important;
- overflow-y:auto!important;
- overflow-x:hidden!important;
- box-sizing:border-box!important;
- padding:0 2px 30px!important;
- -webkit-overflow-scrolling:touch;
- overscroll-behavior:contain;
-}
-
-#modal .gallery-page .gallery-head{
- position:sticky!important;
- top:0!important;
- z-index:20!important;
- margin-bottom:12px!important;
- background:rgba(3,3,3,.97)!important;
-}
-
-#modal .portfolio-grid{
- display:grid!important;
- grid-template-columns:repeat(2,minmax(0,1fr))!important;
- gap:12px!important;
- width:100%!important;
- overflow:visible!important;
- min-height:0!important;
-}
-
-#modal .portfolio-item{
- display:block!important;
- width:100%!important;
-}
-
-#modal .portfolio-item img{
- display:block!important;
- width:100%!important;
- height:auto!important;
-}
-
-#modal .viewer-page{
- overflow:hidden!important;
-}
-
-
-/* ============================= */
-/* محافظت از تصاویر نمونه‌کارها */
-/* ============================= */
-
-.portfolio-item,
-.portfolio-item img,
-.main-image,
-.category,
-.category img{
-
- user-select:none !important;
- -webkit-user-select:none !important;
- -moz-user-select:none !important;
-
- -webkit-touch-callout:none !important;
-
- -webkit-user-drag:none !important;
-
- -webkit-tap-highlight-color:transparent !important;
-}
-
-
-/* جلوگیری از Drag شدن عکس‌ها */
-
-img{
- -webkit-user-drag:none;
-}
-
-
-/* جلوگیری از انتخاب متن/عکس در نمونه‌کارها */
-
-.portfolio-item,
-.portfolio-item img,
-.main-image,
-.category,
-.category img{
- -webkit-touch-callout:none;
- user-select:none;
-}
-
-
-/* روی موبایل */
-
-@media (pointer:coarse){
-
- .portfolio-item img,
- .main-image,
- .category img{
-  -webkit-touch-callout:none !important;
-  -webkit-user-select:none !important;
-  user-select:none !important;
-  -webkit-user-drag:none !important;
- }
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="page">
-
- <div class="top"></div>
-
- <header class="hero" id="home">
-
-  <div class="logo-wrap">
-   <img class="logo" src="logo.jpg" alt="لوگوی پوریا گراف">
-  </div>
-
-  <h1 class="name">پوریا گراف</h1>
-
-  <p class="tag">
-   طراح گرافیک | خلاقیت در قالب تصویر
-  </p>
-
-  <div class="order-box">
-
-   <div class="order-title">
-    ثبت سفارش طراحی
-   </div>
-
-   <div class="order-sub">
-    برای شروع پروژه، از راه‌های ارتباطی زیر با من در تماس باشید.
-   </div>
-
-   <div class="contact-grid">
-
-    <a class="contact" href="tel:09224001160">
-     <span class="icon">
-      <i class="fa-solid fa-phone"></i>
-     </span>
-     <span>
-      <strong>تماس مستقیم</strong>
-      <span>09224001160</span>
-     </span>
-    </a>
-
-    <a class="contact" href="https://eitaa.com/puria_graph" target="_blank" rel="noopener">
-     <span class="icon">
-      <i class="fa-solid fa-comment-dots"></i>
-     </span>
-     <span>
-      <strong>کانال ایتا</strong>
-      <span>puria_graph</span>
-     </span>
-    </a>
-
-    <a class="contact" href="https://eitaa.com/puriagraph" target="_blank" rel="noopener">
-     <span class="icon">
-      <i class="fa-solid fa-headset"></i>
-     </span>
-     <span>
-      <strong>پشتیبانی ایتا</strong>
-      <span>puriagraph</span>
-     </span>
-    </a>
-
-    <a class="contact" href="https://t.me/puria_graph" target="_blank" rel="noopener">
-     <span class="icon">
-      <i class="fa-brands fa-telegram"></i>
-     </span>
-     <span>
-      <strong>کانال تلگرام</strong>
-      <span>puria_graph</span>
-     </span>
-    </a>
-
-   </div>
-  </div>
-
- </header>
-
- <main id="portfolio">
-
-  <section class="section">
-
-   <div class="head">
-    <div>
-     <h2>
-      <i class="fa-solid fa-layer-group"></i>
-      نمونه‌کارها
-     </h2>
-
-     <p>
-      دسته‌بندی پروژه‌های طراحی پوریا گراف
-     </p>
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="topbar">
+        <a href="#home" class="brand-mini">
+            <img src="logo.jpg" alt="پوریا گراف">
+            <span>پوریا گراف</span>
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="منو">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </div>
-   </div>
+</header>
 
-   <div class="categories" id="categories"></div>
+<!-- ================= DRAWER ================= -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer">
+    <div class="drawer-head">
+        <div class="drawer-logo">
+            <img src="logo.jpg" alt="پوریا گراف">
+            پوریا گراف
+        </div>
+        <button class="close-btn" id="drawerClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <nav class="drawer-links">
+        <a href="#home" data-close-drawer><i class="fa-solid fa-house"></i> خانه</a>
+        <a href="#about" data-close-drawer><i class="fa-solid fa-user"></i> درباره من</a>
+        <a href="#portfolio" data-close-drawer><i class="fa-solid fa-images"></i> نمونه‌کارها</a>
+        <a href="#order" data-close-drawer><i class="fa-solid fa-palette"></i> سفارش طراحی</a>
+        <button onclick="openModal('faqModal')"><i class="fa-solid fa-circle-question"></i> سوالات متداول</button>
+        <button id="drawerLanguageBtn"><i class="fa-solid fa-language"></i> English</button>
+    </nav>
+</aside>
 
-  </section>
+<!-- ================= HERO ================= -->
+<main>
+<section class="hero" id="home">
+    <div class="container hero-content reveal">
+        <img src="logo.jpg" alt="پوریا گراف" class="hero-logo">
+        <div class="badge"><span>طراحی گرافیک حرفه‌ای</span></div>
+        <h1><span class="gradient-text">پوریا گراف</span></h1>
+        <div class="job">طراح گرافیک | خلاقیت در قالب تصویر</div>
+        <h2>ایده‌ها رو به تصویر تبدیل می‌کنم</h2>
+        <p class="hero-description">از طراحی لوگو و پوستر تا کاور و بنر؛ با تمرکز بر خلاقیت و ارائه حرفه‌ای.</p>
+        <div class="hero-buttons">
+            <a href="#order" class="btn btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> سفارش طراحی</a>
+            <a href="#portfolio" class="btn btn-secondary"><i class="fa-solid fa-images"></i> نمونه‌کارها</a>
+        </div>
+        <div class="socials">
+            <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots"></i></a>
+            <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+    </div>
+</section>
 
- </main>
+<!-- ================= ABOUT ================= -->
+<section id="about">
+    <div class="container">
+        <div class="section-title reveal">
+            <span>آشنایی بیشتر</span>
+            <h2>درباره من</h2>
+        </div>
+        <div class="about-card glass reveal">
+            <div class="about-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <div>
+                <h3>پوریا گراف</h3>
+                <p>طراح گرافیک با علاقه به خلق تصاویری که نه تنها دیده می‌شن، بلکه در ذهن می‌مانند.</p>
+            </div>
+            <button class="btn btn-secondary" onclick="openModal('aboutModal')">
+                بیشتر <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>
+</section>
 
- <footer>
-  © 2026 پوریا گراف | تمامی حقوق محفوظ است
- </footer>
+<!-- ================= PORTFOLIO ================= -->
+<section id="portfolio">
+    <div class="container">
+        <div class="section-title reveal">
+            <span>پروژه‌ها</span>
+            <h2>نمونه‌کارها</h2>
+            <p>دسته‌بندی پروژه‌های طراحی پوریا گراف</p>
+        </div>
+        <div class="categories-grid" id="categoriesGrid"></div>
 
-</div>
+        <div class="stats">
+            <div class="stat glass reveal">
+                <i class="fa-solid fa-calendar-days"></i>
+                <strong>۱+</strong>   <!-- تغییر به ۱+ -->
+                <span>سال تجربه</span>
+            </div>
+            <div class="stat glass reveal">
+                <i class="fa-solid fa-layer-group"></i>
+                <strong>۷۰+</strong>
+                <span>پروژه طراحی</span>
+            </div>
+            <div class="stat glass reveal">
+                <i class="fa-solid fa-bolt"></i>
+                <strong>۱۰۰%</strong>
+                <span>تعهد و کیفیت</span>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- ================= ORDER ================= -->
+<section id="order">
+    <div class="container">
+        <div class="order-card glass reveal">
+            <div class="section-title" style="margin-bottom:0;">
+                <span>شروع یک پروژه</span>
+                <h2>یه طرح خاص می‌خوای؟</h2>
+                <p>برای سفارش طراحی یا همکاری، از طریق راه‌های ارتباطی زیر پیام بده.</p>
+            </div>
+            <div class="contact-buttons">
+                <a href="tel:09224001160" class="btn btn-primary contact-btn">
+                    <i class="fa-solid fa-phone"></i> تماس مستقیم
+                </a>
+                <a href="https://eitaa.com/puria_graph" target="_blank" class="btn btn-secondary contact-btn">
+                    <i class="fa-solid fa-comment-dots"></i> ایتا
+                </a>
+                <a href="https://t.me/puria_graph" target="_blank" class="btn btn-secondary contact-btn">
+                    <i class="fa-brands fa-telegram"></i> تلگرام
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<nav class="bottom-nav" aria-label="ناوبری اصلی">
+<!-- ================= SOCIAL ================= -->
+<section>
+    <div class="container">
+        <div class="section-title reveal">
+            <span>من را دنبال کن</span>
+            <h2>شبکه‌های اجتماعی</h2>
+        </div>
+        <div class="social-grid">
+            <a href="https://eitaa.com/puria_graph" target="_blank" class="social-card glass reveal">
+                <i class="fa-solid fa-comment-dots"></i>
+                <h3>ایتا</h3>
+                <p>@puria_graph</p>
+            </a>
+            <a href="https://t.me/puria_graph" target="_blank" class="social-card glass reveal">
+                <i class="fa-brands fa-telegram"></i>
+                <h3>تلگرام</h3>
+                <p>@puria_graph</p>
+            </a>
+            <a href="#" class="social-card glass reveal">
+                <i class="fa-solid fa-robot"></i>
+                <h3>ربات</h3>
+                <p>به زودی</p>
+            </a>
+        </div>
+    </div>
+</section>
 
- <button class="active" data-target="home">
-  <i class="fa-solid fa-house"></i>
-  <span>صفحه اصلی</span>
- </button>
+<!-- ================= FAQ ================= -->
+<section>
+    <div class="container">
+        <div class="section-title reveal">
+            <span>FAQ</span>
+            <h2>سوالات متداول</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item glass reveal">
+                <button class="faq-question">
+                    <span>چه خدماتی ارائه می‌دی؟</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>طراحی بنر سایت، کارت ویزیت، پوستر تبلیغاتی، کاور محصول و کاور دوره.</p>
+                </div>
+            </div>
+            <div class="faq-item glass reveal">
+                <button class="faq-question">
+                    <span>چطور سفارش ثبت کنم؟</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>از طریق ایتا، تلگرام یا تماس مستقیم با من در ارتباط باش.</p>
+                </div>
+            </div>
+            <div class="faq-item glass reveal">
+                <button class="faq-question">
+                    <span>مدت زمان انجام پروژه چقدره؟</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>بستگی به نوع پروژه داره، ولی معمولاً بین ۲ تا ۷ روز کاری.</p>
+                </div>
+            </div>
+            <div class="faq-item glass reveal">
+                <button class="faq-question">
+                    <span>آیا امکان اصلاح وجود داره؟</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>بله، تا ۳ مرحله اصلاح رایگان بر اساس توافق اولیه.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
 
- <button data-target="portfolio">
-  <i class="fa-solid fa-images"></i>
-  <span>نمونه‌کارها</span>
- </button>
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>پوریا گراف</h3>
+                <p>طراح گرافیک؛ جایی برای تبدیل ایده‌ها به تصویر.</p>
+            </div>
+            <div>
+                <h4>دسترسی سریع</h4>
+                <div class="footer-links">
+                    <a href="#home">خانه</a>
+                    <a href="#about">درباره من</a>
+                    <a href="#portfolio">نمونه‌کارها</a>
+                    <a href="#order">سفارش طراحی</a>
+                </div>
+            </div>
+            <div>
+                <h4>شبکه‌های اجتماعی</h4>
+                <div class="footer-socials">
+                    <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone"></i></a>
+                    <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots"></i></a>
+                    <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">© 2026 پوریا گراف | تمامی حقوق محفوظ است.</div>
+    </div>
+</footer>
 
- <button id="share">
-  <i class="fa-solid fa-share-nodes"></i>
-  <span>اشتراک‌گذاری</span>
- </button>
-
+<!-- ================= FLOATING NAV ================= -->
+<nav class="floating-nav">
+    <button onclick="scrollToId('about')" title="درباره"><i class="fa-solid fa-user"></i></button>
+    <button onclick="scrollToId('portfolio')" title="نمونه‌کارها"><i class="fa-solid fa-images"></i></button>
+    <button onclick="scrollToId('order')" title="سفارش"><i class="fa-solid fa-palette"></i></button>
+    <button onclick="openModal('faqModal')" title="سوالات"><i class="fa-solid fa-circle-question"></i></button>
+    <button class="language-btn" id="bottomLanguageBtn" title="زبان">EN</button>
 </nav>
 
+<!-- ================= BACK TO TOP ================= -->
+<button class="back-top" id="backTop"><i class="fa-solid fa-arrow-up"></i></button>
 
-<div class="modal" id="modal">
+<!-- ================= MODALS ================= -->
 
- <div class="gallery-page">
-
-  <div class="gallery-head">
-
-   <strong id="galleryTitle">
-    نمونه‌کارها
-   </strong>
-
-   <div style="display:flex;align-items:center;gap:9px">
-
-    <span class="count" id="count"></span>
-
-    <button class="close" id="close">
-     <i class="fa-solid fa-xmark"></i>
-    </button>
-
-   </div>
-
-  </div>
-
-  <div class="portfolio-grid" id="portfolioGrid"></div>
-
- </div>
-
+<!-- ABOUT MODAL -->
+<div class="modal" id="aboutModal">
+    <div class="modal-content text-modal">
+        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+        <h2>درباره پوریا گراف</h2>
+        <p>من پوریا هستم، یک طراح گرافیک که عاشق خلق تصاویر با هویت و داستان هستم. از طراحی بنر و پوستر گرفته تا کاور و کارت ویزیت، هر پروژه‌ای رو با دقت و خلاقیت جلو می‌برم.</p>
+        <p>هدفم اینه که هر طرح نه تنها زیبا باشه، بلکه پیام شما رو به بهترین شکل منتقل کنه.</p>
+        <p><span class="highlight">"طراحی خوب فقط قشنگ نیست؛ باید دیده بشه."</span></p>
+    </div>
 </div>
 
+<!-- FAQ MODAL -->
+<div class="modal" id="faqModal">
+    <div class="modal-content text-modal">
+        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+        <h2>سوالات متداول</h2>
+        <div class="faq-list">
+            <div class="faq-item glass">
+                <button class="faq-question">
+                    <span>آیا طراحی اختصاصی انجام می‌دی؟</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer"><p>بله، همه طرح‌ها بر اساس نیاز و سلیقه شما طراحی می‌شن.</p></div>
+            </div>
+            <div class="faq-item glass">
+                <button class="faq-question">
+                    <span>چطور سفارش بدم؟</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer"><p>از طریق ایتا یا تلگرام پیام بده.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- GALLERY MODAL -->
+<div class="modal gallery-modal" id="galleryModal">
+    <div class="modal-content">
+        <div class="gallery-header">
+            <h3 id="galleryTitle">نمونه‌کارها</h3>
+            <button class="modal-close" onclick="closeAllModals()" style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+</div>
+
+<!-- VIEWER MODAL -->
+<div class="modal viewer-modal" id="viewerModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+        <img class="viewer-image" id="viewerImage" src="" alt="نمونه‌کار">
+        <div class="viewer-actions">
+            <button class="btn btn-primary" id="shareWorkBtn"><i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری</button>
+            <button class="btn btn-secondary" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i> بستن</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= TOAST ================= -->
 <div class="toast" id="toast"></div>
 
-
 <script>
-
-const categories=[
- {title:"طراحی بنر سایت",prefix:"sete",count:16},
- {title:"طراحی کارت ویزیت",prefix:"card",count:6},
- {title:"طراحی پوستر تبلیغاتی",prefix:"taba",count:18},
- {title:"طراحی کاور محصول",prefix:"masa",count:19},
- {title:"طراحی کاور دوره",prefix:"caver",count:10},
- {title:"مجله و منو رستوران",prefix:"nana",count:2}
+// ============================================================
+// DATA
+// ============================================================
+const categories = [
+    { title: "طراحی بنر سایت", prefix: "sete", count: 16 },
+    { title: "طراحی کارت ویزیت", prefix: "card", count: 6 },
+    { title: "طراحی پوستر تبلیغاتی", prefix: "taba", count: 18 },
+    { title: "طراحی کاور محصول", prefix: "masa", count: 19 },
+    { title: "طراحی کاور دوره", prefix: "caver", count: 10 },
+    { title: "مجله و منو رستوران", prefix: "nana", count: 2 }
 ];
+const basePath = "portfolio/";
+const coverPath = "portfolio/category-covers/";
 
-const path="portfolio/";
-const coverPath="portfolio/category-covers/";
-
-const categoryBox=document.getElementById("categories");
-
-categories.forEach((c,i)=>{
-
- const card=document.createElement("button");
-
- card.className="category";
-
- card.innerHTML=`
-  <img src="${coverPath}${c.prefix}.jpg" alt="${c.title}">
-  <span class="category-arrow">
-   <i class="fa-solid fa-chevron-left"></i>
-  </span>
- `;
-
- card.addEventListener("click",()=>openGallery(i));
-
- categoryBox.appendChild(card);
-
+// ============================================================
+// RENDER CATEGORIES
+// ============================================================
+const grid = document.getElementById("categoriesGrid");
+categories.forEach((c, i) => {
+    const card = document.createElement("div");
+    card.className = "category-card glass reveal";
+    card.innerHTML = `
+        <img src="${coverPath}${c.prefix}.jpg" alt="${c.title}" loading="lazy">
+        <div class="category-label">
+            <span>${c.title}</span>
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+    `;
+    card.addEventListener("click", () => openGallery(i));
+    grid.appendChild(card);
 });
 
-
-let currentCategory=0;
-
-const modal=document.getElementById("modal");
-const portfolioGrid=document.getElementById("portfolioGrid");
-const title=document.getElementById("galleryTitle");
-const count=document.getElementById("count");
-
-
-function files(c){
-
- return Array.from(
-  {length:c.count},
-  (_,i)=>`${path}${c.prefix}${i+1}.jpg`
- );
-
-}
-
-
-function renderGallery(){
-
- const c=categories[currentCategory];
-
- const list=files(c);
-
- title.textContent=c.title;
-
- count.textContent=`${list.length} نمونه‌کار`;
-
- portfolioGrid.innerHTML="";
-
-
- list.forEach((src,i)=>{
-
-  const b=document.createElement("button");
-
-  b.className=
-   "portfolio-item"+
-   (c.prefix==="sete"?" banner-site":"");
-
-  b.type="button";
-
-  b.innerHTML=`
-   <img
-    src="${src}"
-    alt="${c.title} - ${i+1}"
-    loading="lazy"
-    draggable="false"
-   >
-  `;
-
-  b.addEventListener(
-   "click",
-   ()=>openViewer(src,c.title,i+1)
-  );
-
-  portfolioGrid.appendChild(b);
-
- });
-
-}
-
-
-function openGallery(i){
-
- currentCategory=i;
-
- modal.classList.add("open");
-
- document.body.style.overflow="hidden";
-
- renderGallery();
-
-}
-
-
-function closeGallery(){
-
- modal.classList.remove("open");
-
- document.body.style.overflow="";
-
-}
-
-
-function openViewer(src,alt,n){
-
- const viewer=document.createElement("div");
-
- viewer.className="modal open";
-
- viewer.style.zIndex="1100";
-
-
- viewer.innerHTML=`
-
-  <div class="gallery-page viewer-page">
-
-   <div class="gallery-head">
-
-    <strong>${alt}</strong>
-
-    <button class="close viewer-close">
-     <i class="fa-solid fa-xmark"></i>
-    </button>
-
-   </div>
-
-
-   <div style="
-    flex:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:0;
-   ">
-
-    <img
-     class="main-image"
-     src="${src}"
-     alt="${alt}"
-     draggable="false"
-    >
-
-   </div>
-
-
-   <button class="download-btn share-work">
-
-    <i class="fa-solid fa-share-nodes"></i>
-    اشتراک‌گذاری
-
-   </button>
-
-  </div>
- `;
-
-
- document.body.appendChild(viewer);
-
-
- const close=()=>viewer.remove();
-
-
- viewer.querySelector(".viewer-close")
-  .addEventListener("click",close);
-
-
- viewer.addEventListener("click",e=>{
-
-  if(e.target===viewer){
-   close();
-  }
-
- });
-
-
- viewer.querySelector(".share-work")
-  .addEventListener("click",async()=>{
-
-   try{
-
-    const url=new URL(src,location.href).href;
-
-    if(navigator.share){
-
-     await navigator.share({
-      title:alt,
-      text:`${alt} - نمونه‌کار ${n}`,
-      url:url
-     });
-
-    }else if(navigator.clipboard){
-
-     await navigator.clipboard.writeText(url);
-
-     showToast("لینک نمونه‌کار کپی شد");
-
-    }
-
-   }catch(e){}
-
-  });
-
-}
-
-
-document.getElementById("close").onclick=closeGallery;
-
-
-modal.addEventListener("click",e=>{
-
- if(e.target===modal){
-  closeGallery();
- }
-
-});
-
-
-document.addEventListener("keydown",e=>{
-
- if(e.key==="Escape"){
-
-  const viewer=
-   document.querySelector(".viewer-page")
-   ?.closest(".modal");
-
-  if(viewer){
-
-   viewer.remove();
-
-   return;
-
-  }
-
-  if(modal.classList.contains("open")){
-   closeGallery();
-  }
-
- }
-
-});
-
-
-document
- .querySelectorAll(".bottom-nav button[data-target]")
- .forEach(b=>{
-
-  b.onclick=()=>{
-
-   document
-    .getElementById(b.dataset.target)
-    .scrollIntoView({
-     behavior:"smooth"
+// ============================================================
+// GALLERY
+// ============================================================
+let currentCategory = 0;
+const galleryModal = document.getElementById("galleryModal");
+const galleryGrid = document.getElementById("galleryGrid");
+const galleryTitle = document.getElementById("galleryTitle");
+
+function openGallery(index) {
+    currentCategory = index;
+    const c = categories[index];
+    galleryTitle.textContent = c.title;
+    galleryGrid.innerHTML = "";
+    const files = Array.from({ length: c.count }, (_, i) => `${basePath}${c.prefix}${i+1}.jpg`);
+    files.forEach((src) => {
+        const item = document.createElement("div");
+        item.className = "work-item";
+        item.innerHTML = `<img src="${src}" loading="lazy" draggable="false">`;
+        item.addEventListener("click", () => openViewer(src));
+        galleryGrid.appendChild(item);
     });
-
-  };
-
- });
-
-
-const toast=document.getElementById("toast");
-
-
-function showToast(t){
-
- toast.textContent=t;
-
- toast.classList.add("show");
-
- setTimeout(
-  ()=>toast.classList.remove("show"),
-  1800
- );
-
+    galleryModal.classList.add("active");
+    document.body.style.overflow = "hidden";
 }
 
+// ============================================================
+// VIEWER
+// ============================================================
+const viewerModal = document.getElementById("viewerModal");
+const viewerImage = document.getElementById("viewerImage");
+let currentViewerSrc = "";
 
-document.getElementById("share").onclick=async()=>{
+function openViewer(src) {
+    currentViewerSrc = src;
+    viewerImage.src = src;
+    viewerModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
 
- try{
-
-  if(navigator.share){
-
-   await navigator.share({
-    title:"پوریا گراف",
-    text:"نمونه‌کارهای پوریا گراف",
-    url:location.href
-   });
-
-  }else{
-
-   await navigator.clipboard.writeText(location.href);
-
-   showToast("لینک صفحه کپی شد");
-
-  }
-
- }catch(e){}
-
-};
-
-
-/* ================================= */
-/* جلوگیری از راست‌کلیک روی تصاویر */
-/* ================================= */
-
-document.addEventListener("contextmenu",function(e){
-
- const protectedElement=e.target.closest(
-  ".portfolio-item, .portfolio-item img, .main-image, .category, .category img"
- );
-
- if(protectedElement){
-
-  e.preventDefault();
-
- }
-
+// ============================================================
+// SHARE WORK
+// ============================================================
+document.getElementById("shareWorkBtn").addEventListener("click", async () => {
+    try {
+        const url = new URL(currentViewerSrc, location.href).href;
+        if (navigator.share) {
+            await navigator.share({ title: "نمونه‌کار پوریا گراف", url });
+        } else {
+            await navigator.clipboard.writeText(url);
+            showToast("لینک نمونه‌کار کپی شد");
+        }
+    } catch (e) {}
 });
 
-
-/* ================================= */
-/* جلوگیری از Drag کردن تصاویر */
-/* ================================= */
-
-document.addEventListener("dragstart",function(e){
-
- if(e.target.closest("img")){
-
-  e.preventDefault();
-
- }
-
+// ============================================================
+// MODAL HELPERS
+// ============================================================
+function openModal(id) {
+    closeAllModals();
+    const m = document.getElementById(id);
+    if (m) { m.classList.add("active"); document.body.style.overflow = "hidden"; }
+}
+function closeAllModals() {
+    document.querySelectorAll(".modal").forEach(m => m.classList.remove("active"));
+    document.body.style.overflow = "";
+}
+document.querySelectorAll(".modal").forEach(m => {
+    m.addEventListener("click", e => { if (e.target === m) closeAllModals(); });
+});
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeAllModals();
 });
 
+// ============================================================
+// DRAWER
+// ============================================================
+const drawer = document.getElementById("drawer");
+const drawerOverlay = document.getElementById("drawerOverlay");
+function openDrawer() { drawer.classList.add("active"); drawerOverlay.classList.add("active"); document.body.style.overflow = "hidden"; }
+function closeDrawer() { drawer.classList.remove("active"); drawerOverlay.classList.remove("active"); document.body.style.overflow = ""; }
+document.getElementById("menuBtn").addEventListener("click", openDrawer);
+document.getElementById("drawerClose").addEventListener("click", closeDrawer);
+drawerOverlay.addEventListener("click", closeDrawer);
+document.querySelectorAll("[data-close-drawer]").forEach(el => el.addEventListener("click", closeDrawer));
 
-/* ================================= */
-/* جلوگیری از انتخاب تصاویر */
-/* ================================= */
-
-document.addEventListener("selectstart",function(e){
-
- const protectedElement=e.target.closest(
-  ".portfolio-item, .portfolio-item img, .main-image, .category, .category img"
- );
-
- if(protectedElement){
-
-  e.preventDefault();
-
- }
-
+// ============================================================
+// FAQ
+// ============================================================
+document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const item = btn.parentElement;
+        const list = item.parentElement;
+        list.querySelectorAll(".faq-item").forEach(other => {
+            if (other !== item) other.classList.remove("active");
+        });
+        item.classList.toggle("active");
+    });
 });
 
-
-/* ================================= */
-/* جلوگیری از لمس طولانی روی تصاویر */
-/* مخصوص موبایل */
-/* ================================= */
-
-let touchTimer=null;
-
-document.addEventListener("touchstart",function(e){
-
- const protectedElement=e.target.closest(
-  ".portfolio-item img, .main-image, .category img"
- );
-
- if(!protectedElement){
-  return;
- }
-
- touchTimer=setTimeout(function(){
-
-  e.preventDefault();
-
- },600);
-
-},{passive:false});
-
-
-document.addEventListener("touchend",function(){
-
- if(touchTimer){
-
-  clearTimeout(touchTimer);
-
-  touchTimer=null;
-
- }
-
-},{passive:false});
-
-
-document.addEventListener("touchmove",function(){
-
- if(touchTimer){
-
-  clearTimeout(touchTimer);
-
-  touchTimer=null;
-
- }
-
-},{passive:false});
-
-
-/* ================================= */
-/* جلوگیری از منوی انتخاب تصویر */
-/* ================================= */
-
-document.addEventListener("mousedown",function(e){
-
- if(e.button===2){
-
-  const protectedElement=e.target.closest(
-   ".portfolio-item, .main-image, .category"
-  );
-
-  if(protectedElement){
-
-   e.preventDefault();
-
-  }
-
- }
-
+// ============================================================
+// BACK TO TOP
+// ============================================================
+const backTop = document.getElementById("backTop");
+window.addEventListener("scroll", () => {
+    backTop.classList.toggle("show", window.scrollY > 450);
 });
+backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
+// ============================================================
+// SCROLL TO
+// ============================================================
+function scrollToId(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+const toast = document.getElementById("toast");
+function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+// ============================================================
+// REVEAL OBSERVER
+// ============================================================
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            observer.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// ============================================================
+// LANGUAGE
+// ============================================================
+let lang = localStorage.getItem("puria-lang") || "fa";
+function toggleLang() {
+    lang = lang === "fa" ? "en" : "fa";
+    localStorage.setItem("puria-lang", lang);
+    document.getElementById("bottomLanguageBtn").textContent = lang === "fa" ? "EN" : "FA";
+    document.getElementById("drawerLanguageBtn").innerHTML = `<i class="fa-solid fa-language"></i> ${lang === "fa" ? "English" : "فارسی"}`;
+}
+document.getElementById("bottomLanguageBtn").addEventListener("click", toggleLang);
+document.getElementById("drawerLanguageBtn").addEventListener("click", toggleLang);
+
+// ============================================================
+// IMAGE PROTECTION
+// ============================================================
+document.addEventListener("contextmenu", e => {
+    if (e.target.closest("img, .work-item, .category-card, .viewer-image")) e.preventDefault();
+});
+document.addEventListener("dragstart", e => {
+    if (e.target.tagName === "IMG") e.preventDefault();
+});
+document.addEventListener("selectstart", e => {
+    if (e.target.closest("img, .work-item, .category-card, .viewer-image")) e.preventDefault();
+});
+let timer;
+document.addEventListener("touchstart", e => {
+    if (e.target.closest("img, .work-item, .category-card, .viewer-image")) {
+        timer = setTimeout(() => e.preventDefault(), 600);
+    }
+}, { passive: false });
+document.addEventListener("touchend", () => { clearTimeout(timer); });
+document.addEventListener("touchmove", () => { clearTimeout(timer); });
 </script>
-
 </body>
 </html>
