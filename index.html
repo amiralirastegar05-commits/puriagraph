@@ -6,14 +6,29 @@
 <meta name="theme-color" content="#080808">
 <meta name="description" content="پوریا گراف | طراحی گرافیک">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <title>پوریا گراف | طراحی گرافیک</title>
 
 <style>
+/* ============================================================
+   FONTS
+============================================================ */
+@font-face {
+    font-family: "PuriaFont";
+    src: url("fonts/YekanNewFaceD1-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "PuriaFont";
+    src: url("fonts/YekanNewFaceD1-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ============================================================
    ROOT & VARIABLES
 ============================================================ */
@@ -39,7 +54,7 @@
 * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
 html { scroll-behavior:smooth; }
 body {
-    font-family: "Vazirmatn", Tahoma, sans-serif;
+    font-family: "PuriaFont", "Vazirmatn", Tahoma, sans-serif;
     background:
         radial-gradient(circle at 20% 10%, rgba(217,174,85,.10), transparent 30%),
         radial-gradient(circle at 80% 60%, rgba(217,174,85,.05), transparent 35%),
@@ -118,7 +133,7 @@ header {
     object-fit: cover;
 }
 .brand-mini span {
-    font-weight: 800;
+    font-weight: 900;
     background: linear-gradient(135deg, var(--gold), var(--gold2));
     -webkit-background-clip: text;
     background-clip: text;
@@ -438,6 +453,46 @@ section { padding: 90px 0; }
 }
 
 /* ============================================================
+   CONTACT CARDS (جایگزین لینک‌های پایین)
+============================================================ */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 30px 0 40px;
+}
+.contact-card {
+    padding: 20px 14px;
+    text-align: center;
+    transition: var(--transition);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow);
+}
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-hover);
+    background: var(--card-hover);
+}
+.contact-card i {
+    font-size: 26px;
+    color: var(--gold2);
+    margin-bottom: 10px;
+}
+.contact-card strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+}
+.contact-card .sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+/* ============================================================
    PORTFOLIO CATEGORIES
 ============================================================ */
 .categories-grid {
@@ -471,29 +526,23 @@ section { padding: 90px 0; }
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.7), transparent 50%);
+    background: linear-gradient(to top, rgba(0,0,0,.5), transparent 40%);
     pointer-events: none;
 }
 .category-label {
     position: absolute;
-    bottom: 18px;
-    right: 18px;
-    left: 18px;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
     z-index: 2;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.category-label span {
-    font-weight: 700;
-    font-size: 14px;
-    text-shadow: 0 2px 15px rgba(0,0,0,.8);
+    justify-content: flex-end;
 }
 .category-label i {
-    font-size: 18px;
+    font-size: 20px;
     color: var(--gold2);
-    background: rgba(0,0,0,.4);
-    padding: 8px;
+    background: rgba(0,0,0,.45);
+    padding: 10px;
     border-radius: 50%;
 }
 
@@ -646,11 +695,6 @@ footer h4 { margin-bottom:15px; }
     font-size: 13px;
 }
 .footer-links a:hover { color: var(--gold2); }
-.footer-socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
 .copyright {
     text-align: center;
     color: #666;
@@ -824,17 +868,17 @@ footer h4 { margin-bottom:15px; }
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 0 20px 25px;
-    overflow-y: auto;          /* <-- اینجا اسکرول رو فعال می‌کنه */
+    overflow-y: auto;
     max-height: calc(90vh - 80px);
     flex: 1 1 auto;
 }
 .gallery-grid .work-item {
-    aspect-ratio: 1/1;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid var(--border);
     cursor: pointer;
     transition: .25s;
+    background: #111;
 }
 .gallery-grid .work-item:hover {
     border-color: var(--border-hover);
@@ -846,6 +890,13 @@ footer h4 { margin-bottom:15px; }
     object-fit: cover;
     pointer-events: none;
     user-select: none;
+}
+/* نسبت‌های متفاوت برای دسته‌ها */
+.gallery-grid .work-item.banner {
+    aspect-ratio: 16 / 9;
+}
+.gallery-grid .work-item:not(.banner) {
+    aspect-ratio: 4 / 5;
 }
 
 /* --- VIEWER MODAL --- */
@@ -878,6 +929,7 @@ footer h4 { margin-bottom:15px; }
     .about-card .btn { grid-column:1/-1; }
     .footer-grid { grid-template-columns:1fr 1fr; }
     .footer-brand { grid-column:1/-1; }
+    .contact-cards { grid-template-columns:repeat(2,1fr); }
 }
 
 @media (max-width:600px) {
@@ -897,6 +949,7 @@ footer h4 { margin-bottom:15px; }
     .floating-nav button { width:42px; height:42px; }
     .back-top { bottom:80px; }
     .drawer { width:88%; }
+    .contact-cards { grid-template-columns:1fr 1fr; gap:10px; }
 }
 </style>
 </head>
@@ -980,6 +1033,34 @@ footer h4 { margin-bottom:15px; }
     </div>
 </section>
 
+<!-- ================= CONTACT CARDS (جایگزین لینک‌های پایین) ================= -->
+<section>
+    <div class="container">
+        <div class="contact-cards">
+            <a href="tel:09224001160" class="contact-card glass reveal">
+                <i class="fa-solid fa-phone"></i>
+                <strong>تماس</strong>
+                <span class="sub">۰۹۲۲۴۰۰۱۱۶۰</span>
+            </a>
+            <a href="https://eitaa.com/puria_graph" target="_blank" class="contact-card glass reveal">
+                <i class="fa-solid fa-comment-dots"></i>
+                <strong>کانال ایتا</strong>
+                <span class="sub">@puria_graph</span>
+            </a>
+            <a href="https://eitaa.com/puriagraph" target="_blank" class="contact-card glass reveal">
+                <i class="fa-solid fa-headset"></i>
+                <strong>پشتیبانی ایتا</strong>
+                <span class="sub">@puriagraph</span>
+            </a>
+            <a href="https://t.me/puria_graph" target="_blank" class="contact-card glass reveal">
+                <i class="fa-brands fa-telegram"></i>
+                <strong>کانال تلگرام</strong>
+                <span class="sub">@puria_graph</span>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- ================= PORTFOLIO ================= -->
 <section id="portfolio">
     <div class="container">
@@ -993,7 +1074,7 @@ footer h4 { margin-bottom:15px; }
         <div class="stats">
             <div class="stat glass reveal">
                 <i class="fa-solid fa-calendar-days"></i>
-                <strong>۱+</strong>   <!-- تغییر به ۱+ -->
+                <strong>۱+</strong>
                 <span>سال تجربه</span>
             </div>
             <div class="stat glass reveal">
@@ -1129,7 +1210,7 @@ footer h4 { margin-bottom:15px; }
             </div>
             <div>
                 <h4>شبکه‌های اجتماعی</h4>
-                <div class="footer-socials">
+                <div class="footer-socials" style="display:flex; gap:10px;">
                     <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone"></i></a>
                     <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots"></i></a>
                     <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
@@ -1231,7 +1312,7 @@ const basePath = "portfolio/";
 const coverPath = "portfolio/category-covers/";
 
 // ============================================================
-// RENDER CATEGORIES
+// RENDER CATEGORIES (بدون اسم)
 // ============================================================
 const grid = document.getElementById("categoriesGrid");
 categories.forEach((c, i) => {
@@ -1240,7 +1321,6 @@ categories.forEach((c, i) => {
     card.innerHTML = `
         <img src="${coverPath}${c.prefix}.jpg" alt="${c.title}" loading="lazy">
         <div class="category-label">
-            <span>${c.title}</span>
             <i class="fa-solid fa-chevron-left"></i>
         </div>
     `;
@@ -1249,7 +1329,7 @@ categories.forEach((c, i) => {
 });
 
 // ============================================================
-// GALLERY
+// GALLERY (با نسبت‌های متفاوت)
 // ============================================================
 let currentCategory = 0;
 const galleryModal = document.getElementById("galleryModal");
@@ -1262,9 +1342,12 @@ function openGallery(index) {
     galleryTitle.textContent = c.title;
     galleryGrid.innerHTML = "";
     const files = Array.from({ length: c.count }, (_, i) => `${basePath}${c.prefix}${i+1}.jpg`);
+    const isBanner = c.prefix === "sete"; // دسته بنر سایت
+
     files.forEach((src) => {
         const item = document.createElement("div");
         item.className = "work-item";
+        if (isBanner) item.classList.add("banner");
         item.innerHTML = `<img src="${src}" loading="lazy" draggable="false">`;
         item.addEventListener("click", () => openViewer(src));
         galleryGrid.appendChild(item);
