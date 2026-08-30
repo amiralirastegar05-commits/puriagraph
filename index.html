@@ -887,9 +887,10 @@ footer h4 { margin-bottom:15px; }
 .gallery-grid .work-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;  /* تغییر از cover به contain برای جلوگیری از برش */
     pointer-events: none;
     user-select: none;
+    background: #0a0a0a;   /* پس‌زمینه برای فضای خالی */
 }
 /* نسبت‌های متفاوت برای دسته‌ها */
 .gallery-grid .work-item.banner {
