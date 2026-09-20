@@ -952,6 +952,34 @@ footer h4 { margin-bottom:15px; }
     .drawer { width:88%; }
     .contact-cards { grid-template-columns:1fr 1fr; gap:10px; }
 }
+
+/* REDESIGN — all original asset paths and font declarations retained */
+:root{--bg:#101110;--bg-2:#171815;--card:#191a17;--card-hover:#21221d;--border:#33352c;--border-hover:#b8c28b;--text:#f1f0e7;--muted:#a4a69a;--gold:#d5c28a;--gold2:#e8d8a7;--shadow:none;--radius:12px}
+body{background:var(--bg)}body::before{display:none}::selection{background:#d5c28a;color:#101110}
+.container,.topbar{width:min(1200px,90%)}section{padding:70px 0;scroll-margin-top:105px}
+header{top:0;padding:18px 0;background:rgba(16,17,16,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.topbar{gap:24px}.brand-mini{background:none;border:0;padding:0;border-radius:0;gap:12px}.brand-mini img{border-radius:9px;width:40px;height:40px}.brand-mini span{background:none;color:var(--text);font-size:19px}
+.desktop-nav{display:flex;gap:32px;margin-inline-start:auto;align-items:center}.desktop-nav button{border:0;background:none;color:var(--muted);font-size:13px}.desktop-nav button:hover{color:var(--gold2)}.desktop-nav .nav-order{border:1px solid var(--gold);padding:11px 19px;border-radius:6px;color:var(--gold2)}.menu-btn{border-radius:6px;background:transparent;width:43px;height:43px}
+.hero{min-height:740px;padding:165px 0 80px;text-align:right;position:relative;border-bottom:1px solid var(--border);overflow:hidden}.hero::before{content:'';position:absolute;width:580px;height:580px;left:-250px;top:80px;background:radial-gradient(circle,#d5c28a0b,transparent 70%);pointer-events:none}
+.hero-layout{display:grid;grid-template-columns:1.08fr 1fr;align-items:center;gap:65px}.hero-content{max-width:none;width:auto;margin:0}.hero-logo{display:none}.badge{border:0;border-radius:0;padding:0;background:none;font-size:12px;letter-spacing:.2px;margin-bottom:25px}.badge::before{box-shadow:none;width:6px;height:6px}.hero h1{font-size:clamp(48px,5.9vw,78px);line-height:1.3;letter-spacing:-2px;margin-bottom:12px}.gradient-text{background:none;color:var(--text);animation:none}.job{font-size:13px;font-weight:500;color:var(--muted);margin-bottom:27px}.hero h2{font-size:clamp(24px,2.8vw,36px);font-weight:900;line-height:1.8;max-width:480px;color:var(--gold2)}.hero-description{margin:0;max-width:450px;font-size:14px;line-height:2.2}.hero-buttons{justify-content:flex-start;gap:12px;margin-top:30px}.btn{border-radius:6px;padding:14px 23px;font-size:13px;background:transparent}.btn-primary{background:var(--gold);color:#151610;border-color:var(--gold);box-shadow:none}.btn-primary:hover{background:var(--gold2);box-shadow:none}.socials{justify-content:flex-start;gap:8px;margin-top:27px}.social-icon{border-radius:50%;width:36px;height:36px;background:transparent;font-size:13px}
+.hero-art{height:470px;position:relative;direction:ltr;isolation:isolate}.art-board{position:absolute;inset:20px 10px 20px 15px;border:1px solid #45483b;border-radius:3px;background:#1b1d18;transform:rotate(-5deg);overflow:hidden;box-shadow:22px 24px 0 #0b0c0b}.art-grid{position:absolute;inset:0;background-image:linear-gradient(#c8ceaf0b 1px,transparent 1px),linear-gradient(90deg,#c8ceaf0b 1px,transparent 1px);background-size:35px 35px}.art-top{position:absolute;top:24px;left:25px;right:25px;display:flex;justify-content:space-between;color:#babcae;font:10px Tahoma;letter-spacing:2px}.art-mark{position:absolute;left:50%;top:48%;width:255px;height:255px;transform:translate(-50%,-50%)}.art-mark span{position:absolute;inset:0;border:1px solid #e8d8a7;border-radius:50%;transform:rotate(calc(var(--i)*15deg)) scaleX(.36);background:linear-gradient(90deg,#d5c28a0a,#d5c28a03)}.art-bottom{position:absolute;bottom:28px;left:28px;right:28px;border-top:1px solid #555846;padding-top:18px;display:flex;justify-content:space-between;align-items:end;color:#eee9da;font:900 25px/1.2 Tahoma;letter-spacing:-1px}.art-bottom small{font:9px/1.8 Tahoma;letter-spacing:1px;color:#b9beab}.art-tag{position:absolute;bottom:0;right:-12px;padding:20px 25px;background:#d5c28a;color:#1a1c15;transform:rotate(4deg);font-size:14px;border-radius:3px;box-shadow:0 8px 30px #0004;direction:rtl}.art-tag b{display:block;font-weight:900;font-size:20px;margin-bottom:5px}.art-star{position:absolute;top:0;right:-15px;color:var(--gold2);font:90px/1 Georgia;transform:rotate(12deg)}
+.disciplines{border-bottom:1px solid var(--border);padding:23px 0;color:var(--muted)}.disciplines .container{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:13px}.disciplines b{color:var(--gold);font-size:18px;font-weight:500}
+.section-title{text-align:right;margin-bottom:32px;position:relative}.section-title>span{font-size:11px;letter-spacing:1px;display:inline-flex;align-items:center;gap:10px}.section-title>span:before{content:'';height:1px;width:24px;background:var(--gold)}.section-title h2{font-size:32px;line-height:1.7;margin-top:8px}.section-title p{font-size:13px}.glass{backdrop-filter:none;box-shadow:none}
+#about{padding-bottom:20px}.about-card{padding:30px;background:transparent;border-width:1px 0;border-radius:0;grid-template-columns:70px 1fr auto;gap:24px}.about-icon{width:66px;height:66px;border-radius:50%;font-size:25px;background:#d5c28a0a}.about-card h3{font-size:20px}.about-card p{max-width:650px}
+#about+section{padding:0 0 50px}.contact-cards{margin:25px 0 0;gap:12px}.contact-card{box-shadow:none;border-radius:8px;padding:22px 16px;display:grid;grid-template-columns:38px 1fr;text-align:right;align-items:center;column-gap:12px;background:#171815}.contact-card i{grid-row:span 2;margin:0;font-size:22px}.contact-card .sub{direction:ltr;text-align:right;font-size:11px}.contact-card strong{font-size:13px}
+#portfolio{background:#141512;border-block:1px solid var(--border)}.categories-grid{grid-template-columns:repeat(3,1fr);gap:24px}.category-card{aspect-ratio:4/3;border-radius:9px;background:#22241e}.category-card img{height:calc(100% - 68px);display:block;color:var(--muted);font-size:12px;object-fit:cover}.category-card::after{display:none}.category-label{bottom:0;left:0;right:0;padding:18px;justify-content:space-between;align-items:center;background:#1b1d18;border-top:1px solid var(--border);height:68px}.category-label strong{font-size:13px;font-weight:500}.category-label small{font-size:10px;color:var(--muted);display:block;margin-top:4px}.category-label i{font-size:12px;padding:10px;background:transparent;border:1px solid var(--border);color:var(--gold2)}
+.stats{margin-top:45px;gap:0;border-top:1px solid var(--border);padding-top:32px}.stat{border:0;border-left:1px solid var(--border);border-radius:0;background:transparent;padding:10px 15px}.stat:last-child{border-left:0}.stat i{display:none}.stat strong{font-size:38px;color:var(--gold2);direction:ltr}.stat span{font-size:12px}
+.order-card{position:relative;padding:55px 35px;background:#d5c28a;color:#181a14;border:0;border-radius:12px;overflow:hidden}.order-card .section-title{text-align:center}.order-card .section-title>span{color:#4b4b36}.order-card .section-title>span:before{background:#4b4b36}.order-card h2{font-size:38px}.order-card p{color:#4b4b36}.order-card .btn-primary{background:#191c16;color:#f5edda;border-color:#191c16}.order-card .btn-secondary{border-color:#777258;color:#24261c}.order-card .btn:hover{background:#25291e;color:#fff}.social-card{display:grid;grid-template-columns:48px 1fr;text-align:right;padding:25px;border-radius:8px;background:transparent}.social-card i{grid-row:span 2;margin:auto 0}.social-card p{direction:ltr;text-align:right}.faq-list{gap:0}.faq-item{border:0;border-bottom:1px solid var(--border);border-radius:0;background:transparent}.faq-question{padding:24px 5px;font-size:14px}.faq-answer p{padding-inline:5px}.faq-item.active{background:#191b16}.faq-item.active .faq-question,.faq-item.active .faq-answer p{padding-inline:18px}
+footer{background:#0c0e0b;border-color:var(--border);margin-top:30px;padding-top:55px}.footer-brand h3{background:none;color:var(--gold2)}.copyright{color:var(--muted)}.floating-nav{border-radius:50px;padding:6px 12px;background:#20231aeb;box-shadow:0 8px 30px #0004}.floating-nav button{border-radius:50%;width:40px;height:40px}.back-top{border-radius:50%}.drawer{background:#171a13}.modal-content,.gallery-modal .modal-content,.viewer-modal .modal-content{background:#171a13;border-radius:12px}.toast{position:fixed;bottom:90px;left:50%;transform:translate(-50%,10px);background:var(--gold2);color:#161910;padding:12px 24px;border-radius:6px;opacity:0;pointer-events:none;z-index:3000;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:5px}.reveal{opacity:1;transform:none}.menu-btn i{font-size:18px}
+@media(min-width:1000px){main>section:has(>.container>.faq-list) .container{display:grid;grid-template-columns:1fr 1.7fr;gap:75px}}
+@media(max-width:1000px){.hero-layout{gap:30px}.hero-art{height:400px}.art-mark{width:220px;height:220px}.desktop-nav{gap:18px}.categories-grid{gap:16px}.contact-card{grid-template-columns:28px 1fr;padding:18px 12px}}
+@media(max-width:800px){.desktop-nav{display:none}.menu-btn{margin-inline-start:auto}.hero{padding:130px 0 60px;min-height:auto}.hero-layout{grid-template-columns:1fr;gap:45px}.hero-content{text-align:center}.hero h1{font-size:58px}.hero h2,.hero-description{margin-inline:auto}.hero-buttons,.socials{justify-content:center}.hero-art{max-width:450px;width:90%;height:400px;margin:auto}.categories-grid{grid-template-columns:repeat(2,1fr)}.contact-cards{grid-template-columns:repeat(2,1fr)}.disciplines .container{flex-wrap:wrap;justify-content:center;font-size:11px;gap:12px}.about-card{grid-template-columns:60px 1fr}.about-card .btn{grid-column:1/-1;justify-self:start}.stats{grid-template-columns:repeat(3,1fr)}.stat strong{font-size:30px}.stat span{font-size:11px}.social-grid{grid-template-columns:1fr}.section-title h2{font-size:28px}}
+@media(max-width:480px){section{padding:50px 0}.hero h1{font-size:48px}.hero h2{font-size:25px}.hero-art{height:340px}.art-mark{width:185px;height:185px}.art-bottom{font-size:21px}.art-tag{padding:15px 18px;font-size:11px}.art-tag b{font-size:17px}.categories-grid{grid-template-columns:1fr}.category-card{aspect-ratio:4/3}.contact-card strong{font-size:12px}.contact-card .sub{font-size:10px}.about-card{padding:25px 0}.order-card{padding:35px 20px}.order-card h2{font-size:29px}.contact-buttons .btn{width:100%}.hero-buttons .btn{padding:13px 17px}.stat strong{font-size:26px}.stat{padding:8px}.stat span{font-size:10px}.floating-nav{bottom:12px}.footer-grid{gap:25px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+i[class*="fa-"]::before{display:none!important}i[class*="fa-"]{display:inline-flex;align-items:center;justify-content:center}i[class*="fa-"] svg{width:1em;height:1em;flex-shrink:0}
 </style>
 </head>
 
@@ -964,8 +992,10 @@ footer h4 { margin-bottom:15px; }
             <img src="logo.jpg" alt="پوریا گراف">
             <span>پوریا گراف</span>
         </a>
+        <nav class="desktop-nav" aria-label="ناوبری اصلی">
+<button onclick="scrollToId('home')">خانه</button><button onclick="scrollToId('about')">درباره من</button><button onclick="scrollToId('portfolio')">نمونه‌کارها</button><button onclick="openModal('faqModal')">سوالات متداول</button><button class="nav-order" onclick="scrollToId('order')">شروع همکاری ↗</button></nav>
         <button class="menu-btn" id="menuBtn" aria-label="منو">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></i>
         </button>
     </div>
 </header>
@@ -978,24 +1008,25 @@ footer h4 { margin-bottom:15px; }
             <img src="logo.jpg" alt="پوریا گراف">
             پوریا گراف
         </div>
-        <button class="close-btn" id="drawerClose">
-            <i class="fa-solid fa-xmark"></i>
+        <button class="close-btn" id="drawerClose" aria-label="بستن منو">
+            <i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i>
         </button>
     </div>
     <nav class="drawer-links">
-        <a href="#home" data-close-drawer><i class="fa-solid fa-house"></i> خانه</a>
-        <a href="#about" data-close-drawer><i class="fa-solid fa-user"></i> درباره من</a>
-        <a href="#portfolio" data-close-drawer><i class="fa-solid fa-images"></i> نمونه‌کارها</a>
-        <a href="#order" data-close-drawer><i class="fa-solid fa-palette"></i> سفارش طراحی</a>
-        <button onclick="openModal('faqModal')"><i class="fa-solid fa-circle-question"></i> سوالات متداول</button>
-        <button id="drawerLanguageBtn"><i class="fa-solid fa-language"></i> English</button>
+        <a href="#home" data-close-drawer><i class="fa-solid fa-house" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8M5 10v11h5v-7h4v7h5V10"/></svg></i> خانه</a>
+        <a href="#about" data-close-drawer><i class="fa-solid fa-user" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 21v-2a8 8 0 0 1 16 0v2"/></svg></i> درباره من</a>
+        <a href="#portfolio" data-close-drawer><i class="fa-solid fa-images" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3ZM3 16l5-6 5 6 3-3 5 5M15 8h.01"/></svg></i> نمونه‌کارها</a>
+        <a href="#order" data-close-drawer><i class="fa-solid fa-palette" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg></i> سفارش طراحی</a>
+        <button onclick="openModal('faqModal')"><i class="fa-solid fa-circle-question" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9 9a3 3 0 1 1 4 3l-1 2M12 17h.01"/></svg></i> سوالات متداول</button>
+        <button id="drawerLanguageBtn"><i class="fa-solid fa-language" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h12M8 2v3M4 5c0 6 6 10 9 11M12 5c0 6-6 10-9 11M14 21l4-11 4 11M16 17h4"/></svg></i> English</button>
     </nav>
 </aside>
 
 <!-- ================= HERO ================= -->
 <main>
 <section class="hero" id="home">
-    <div class="container hero-content reveal">
+    <div class="container hero-layout">
+    <div class="hero-content reveal">
         <img src="logo.jpg" alt="پوریا گراف" class="hero-logo">
         <div class="badge"><span>طراحی گرافیک حرفه‌ای</span></div>
         <h1><span class="gradient-text">پوریا گراف</span></h1>
@@ -1003,16 +1034,20 @@ footer h4 { margin-bottom:15px; }
         <h2>ایده‌ها رو به تصویر تبدیل می‌کنم</h2>
         <p class="hero-description">از طراحی لوگو و پوستر تا کاور و بنر؛ با تمرکز بر خلاقیت و ارائه حرفه‌ای.</p>
         <div class="hero-buttons">
-            <a href="#order" class="btn btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> سفارش طراحی</a>
-            <a href="#portfolio" class="btn btn-secondary"><i class="fa-solid fa-images"></i> نمونه‌کارها</a>
+            <a href="#order" class="btn btn-primary"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg></i> سفارش طراحی</a>
+            <a href="#portfolio" class="btn btn-secondary"><i class="fa-solid fa-images" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3ZM3 16l5-6 5 6 3-3 5 5M15 8h.01"/></svg></i> نمونه‌کارها</a>
         </div>
         <div class="socials">
-            <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone"></i></a>
-            <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots"></i></a>
-            <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+            <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H4v3c0 8 6 14 14 14h3v-4l-5-2-2 3c-4-1-6-3-7-7l3-2Z"/></svg></i></a>
+            <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11a9 8 0 0 1-9 8H8l-5 3 1-6a9 8 0 1 1 17-5ZM8 11h.01M12 11h.01M16 11h.01"/></svg></i></a>
+            <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 20-7-5 18-6-6-4 3 1-6 9-6-6 9Z"/></svg></i></a>
         </div>
     </div>
+
+<div class="hero-art" aria-hidden="true"><div class="art-board"><div class="art-grid"></div><div class="art-top"><span>PURIA GRAPH®</span><span>DESIGN STUDIO</span></div><div class="art-mark"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span></div><div class="art-bottom"><div>IDEAS INTO<br>IDENTITY.</div><small>CREATIVE DIRECTION<br>GRAPHIC DESIGN</small></div></div><span class="art-star">✳</span><div class="art-tag"><b>خلاقیت، بدون مرز.</b>هر ایده، شروع یک تصویر تازه</div></div>
+</div>
 </section>
+<div class="disciplines"><div class="container"><span>طراحی هویت بصری</span><b>✳</b><span>پوستر و تبلیغات</span><b>✳</b><span>کاور محصول و دوره</span><b>✳</b><span>طراحی بنر سایت</span></div></div>
 
 <!-- ================= ABOUT ================= -->
 <section id="about">
@@ -1022,13 +1057,13 @@ footer h4 { margin-bottom:15px; }
             <h2>درباره من</h2>
         </div>
         <div class="about-card glass reveal">
-            <div class="about-icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <div class="about-icon"><i class="fa-solid fa-pen-nib" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 4-12 10-5 3 3-5 10-12 4Zm0 0 9-9M11 10l3 3"/></svg></i></div>
             <div>
                 <h3>پوریا گراف</h3>
                 <p>طراح گرافیک با علاقه به خلق تصاویری که نه تنها دیده می‌شن، بلکه در ذهن می‌مانند.</p>
             </div>
             <button class="btn btn-secondary" onclick="openModal('aboutModal')">
-                بیشتر <i class="fa-solid fa-arrow-left"></i>
+                بیشتر <i class="fa-solid fa-arrow-left" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4m6-6-6 6 6 6"/></svg></i>
             </button>
         </div>
     </div>
@@ -1039,22 +1074,22 @@ footer h4 { margin-bottom:15px; }
     <div class="container">
         <div class="contact-cards">
             <a href="tel:09224001160" class="contact-card glass reveal">
-                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-phone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H4v3c0 8 6 14 14 14h3v-4l-5-2-2 3c-4-1-6-3-7-7l3-2Z"/></svg></i>
                 <strong>تماس</strong>
                 <span class="sub">۰۹۲۲۴۰۰۱۱۶۰</span>
             </a>
             <a href="https://eitaa.com/puria_graph" target="_blank" class="contact-card glass reveal">
-                <i class="fa-solid fa-comment-dots"></i>
+                <i class="fa-solid fa-comment-dots" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11a9 8 0 0 1-9 8H8l-5 3 1-6a9 8 0 1 1 17-5ZM8 11h.01M12 11h.01M16 11h.01"/></svg></i>
                 <strong>کانال ایتا</strong>
                 <span class="sub">@puria_graph</span>
             </a>
             <a href="https://eitaa.com/puriagraph" target="_blank" class="contact-card glass reveal">
-                <i class="fa-solid fa-headset"></i>
+                <i class="fa-solid fa-headset" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-3a8 8 0 0 1 16 0v7h-4v-7h4M4 11h4v7H4ZM20 18v3h-7"/></svg></i>
                 <strong>پشتیبانی ایتا</strong>
                 <span class="sub">@puriagraph</span>
             </a>
             <a href="https://t.me/puria_graph" target="_blank" class="contact-card glass reveal">
-                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-telegram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 20-7-5 18-6-6-4 3 1-6 9-6-6 9Z"/></svg></i>
                 <strong>کانال تلگرام</strong>
                 <span class="sub">@puria_graph</span>
             </a>
@@ -1074,17 +1109,17 @@ footer h4 { margin-bottom:15px; }
 
         <div class="stats">
             <div class="stat glass reveal">
-                <i class="fa-solid fa-calendar-days"></i>
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg></i>
                 <strong>۳+</strong>
                 <span>سال تجربه</span>
             </div>
             <div class="stat glass reveal">
-                <i class="fa-solid fa-layer-group"></i>
+                <i class="fa-solid fa-layer-group" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg></i>
                 <strong>۳۵۰+</strong>
                 <span>پروژه طراحی</span>
             </div>
             <div class="stat glass reveal">
-                <i class="fa-solid fa-bolt"></i>
+                <i class="fa-solid fa-bolt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg></i>
                 <strong>۱۰۰%</strong>
                 <span>تعهد و کیفیت</span>
             </div>
@@ -1103,13 +1138,13 @@ footer h4 { margin-bottom:15px; }
             </div>
             <div class="contact-buttons">
                 <a href="tel:09224001160" class="btn btn-primary contact-btn">
-                    <i class="fa-solid fa-phone"></i> تماس مستقیم
+                    <i class="fa-solid fa-phone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H4v3c0 8 6 14 14 14h3v-4l-5-2-2 3c-4-1-6-3-7-7l3-2Z"/></svg></i> تماس مستقیم
                 </a>
                 <a href="https://eitaa.com/puria_graph" target="_blank" class="btn btn-secondary contact-btn">
-                    <i class="fa-solid fa-comment-dots"></i> ایتا
+                    <i class="fa-solid fa-comment-dots" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11a9 8 0 0 1-9 8H8l-5 3 1-6a9 8 0 1 1 17-5ZM8 11h.01M12 11h.01M16 11h.01"/></svg></i> ایتا
                 </a>
                 <a href="https://t.me/puria_graph" target="_blank" class="btn btn-secondary contact-btn">
-                    <i class="fa-brands fa-telegram"></i> تلگرام
+                    <i class="fa-brands fa-telegram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 20-7-5 18-6-6-4 3 1-6 9-6-6 9Z"/></svg></i> تلگرام
                 </a>
             </div>
         </div>
@@ -1125,17 +1160,17 @@ footer h4 { margin-bottom:15px; }
         </div>
         <div class="social-grid">
             <a href="https://eitaa.com/puria_graph" target="_blank" class="social-card glass reveal">
-                <i class="fa-solid fa-comment-dots"></i>
+                <i class="fa-solid fa-comment-dots" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11a9 8 0 0 1-9 8H8l-5 3 1-6a9 8 0 1 1 17-5ZM8 11h.01M12 11h.01M16 11h.01"/></svg></i>
                 <h3>ایتا</h3>
                 <p>@puria_graph</p>
             </a>
             <a href="https://t.me/puria_graph" target="_blank" class="social-card glass reveal">
-                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-telegram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 20-7-5 18-6-6-4 3 1-6 9-6-6 9Z"/></svg></i>
                 <h3>تلگرام</h3>
                 <p>@puria_graph</p>
             </a>
             <a href="#" class="social-card glass reveal">
-                <i class="fa-solid fa-robot"></i>
+                <i class="fa-solid fa-robot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v14H4ZM12 3v4M8 12h.01M16 12h.01M8 17h8"/></svg></i>
                 <h3>ربات</h3>
                 <p>به زودی</p>
             </a>
@@ -1154,7 +1189,7 @@ footer h4 { margin-bottom:15px; }
             <div class="faq-item glass reveal">
                 <button class="faq-question">
                     <span>چه خدماتی ارائه می‌دی؟</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></i>
                 </button>
                 <div class="faq-answer">
                     <p>طراحی بنر سایت، کارت ویزیت، پوستر تبلیغاتی، کاور محصول و کاور دوره.</p>
@@ -1163,7 +1198,7 @@ footer h4 { margin-bottom:15px; }
             <div class="faq-item glass reveal">
                 <button class="faq-question">
                     <span>چطور سفارش ثبت کنم؟</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></i>
                 </button>
                 <div class="faq-answer">
                     <p>از طریق ایتا، تلگرام یا تماس مستقیم با من در ارتباط باش.</p>
@@ -1172,7 +1207,7 @@ footer h4 { margin-bottom:15px; }
             <div class="faq-item glass reveal">
                 <button class="faq-question">
                     <span>مدت زمان انجام پروژه چقدره؟</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></i>
                 </button>
                 <div class="faq-answer">
                     <p>بستگی به نوع پروژه داره، ولی معمولاً بین ۲ تا ۷ روز کاری.</p>
@@ -1181,7 +1216,7 @@ footer h4 { margin-bottom:15px; }
             <div class="faq-item glass reveal">
                 <button class="faq-question">
                     <span>آیا امکان اصلاح وجود داره؟</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></i>
                 </button>
                 <div class="faq-answer">
                     <p>بله، تا ۳ مرحله اصلاح رایگان بر اساس توافق اولیه.</p>
@@ -1212,9 +1247,9 @@ footer h4 { margin-bottom:15px; }
             <div>
                 <h4>شبکه‌های اجتماعی</h4>
                 <div class="footer-socials" style="display:flex; gap:10px;">
-                    <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone"></i></a>
-                    <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots"></i></a>
-                    <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="tel:09224001160" class="social-icon"><i class="fa-solid fa-phone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H4v3c0 8 6 14 14 14h3v-4l-5-2-2 3c-4-1-6-3-7-7l3-2Z"/></svg></i></a>
+                    <a href="https://eitaa.com/puria_graph" target="_blank" class="social-icon"><i class="fa-solid fa-comment-dots" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11a9 8 0 0 1-9 8H8l-5 3 1-6a9 8 0 1 1 17-5ZM8 11h.01M12 11h.01M16 11h.01"/></svg></i></a>
+                    <a href="https://t.me/puria_graph" target="_blank" class="social-icon"><i class="fa-brands fa-telegram" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 20-7-5 18-6-6-4 3 1-6 9-6-6 9Z"/></svg></i></a>
                 </div>
             </div>
         </div>
@@ -1224,22 +1259,22 @@ footer h4 { margin-bottom:15px; }
 
 <!-- ================= FLOATING NAV ================= -->
 <nav class="floating-nav">
-    <button onclick="scrollToId('about')" title="درباره"><i class="fa-solid fa-user"></i></button>
-    <button onclick="scrollToId('portfolio')" title="نمونه‌کارها"><i class="fa-solid fa-images"></i></button>
-    <button onclick="scrollToId('order')" title="سفارش"><i class="fa-solid fa-palette"></i></button>
-    <button onclick="openModal('faqModal')" title="سوالات"><i class="fa-solid fa-circle-question"></i></button>
+    <button onclick="scrollToId('about')" title="درباره"><i class="fa-solid fa-user" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 21v-2a8 8 0 0 1 16 0v2"/></svg></i></button>
+    <button onclick="scrollToId('portfolio')" title="نمونه‌کارها"><i class="fa-solid fa-images" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3ZM3 16l5-6 5 6 3-3 5 5M15 8h.01"/></svg></i></button>
+    <button onclick="scrollToId('order')" title="سفارش"><i class="fa-solid fa-palette" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z"/></svg></i></button>
+    <button onclick="openModal('faqModal')" title="سوالات"><i class="fa-solid fa-circle-question" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9 9a3 3 0 1 1 4 3l-1 2M12 17h.01"/></svg></i></button>
     <button class="language-btn" id="bottomLanguageBtn" title="زبان">EN</button>
 </nav>
 
 <!-- ================= BACK TO TOP ================= -->
-<button class="back-top" id="backTop"><i class="fa-solid fa-arrow-up"></i></button>
+<button class="back-top" id="backTop" aria-label="بازگشت به بالا"><i class="fa-solid fa-arrow-up" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></i></button>
 
 <!-- ================= MODALS ================= -->
 
 <!-- ABOUT MODAL -->
 <div class="modal" id="aboutModal">
     <div class="modal-content text-modal">
-        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i></button>
         <h2>درباره پوریا گراف</h2>
         <p>من پوریا هستم، یک طراح گرافیک که عاشق خلق تصاویر با هویت و داستان هستم. از طراحی بنر و پوستر گرفته تا کاور و کارت ویزیت، هر پروژه‌ای رو با دقت و خلاقیت جلو می‌برم.</p>
         <p>هدفم اینه که هر طرح نه تنها زیبا باشه، بلکه پیام شما رو به بهترین شکل منتقل کنه.</p>
@@ -1250,20 +1285,20 @@ footer h4 { margin-bottom:15px; }
 <!-- FAQ MODAL -->
 <div class="modal" id="faqModal">
     <div class="modal-content text-modal">
-        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i></button>
         <h2>سوالات متداول</h2>
         <div class="faq-list">
             <div class="faq-item glass">
                 <button class="faq-question">
                     <span>آیا طراحی اختصاصی انجام می‌دی؟</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></i>
                 </button>
                 <div class="faq-answer"><p>بله، همه طرح‌ها بر اساس نیاز و سلیقه شما طراحی می‌شن.</p></div>
             </div>
             <div class="faq-item glass">
                 <button class="faq-question">
                     <span>چطور سفارش بدم؟</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></i>
                 </button>
                 <div class="faq-answer"><p>از طریق ایتا یا تلگرام پیام بده.</p></div>
             </div>
@@ -1276,7 +1311,7 @@ footer h4 { margin-bottom:15px; }
     <div class="modal-content">
         <div class="gallery-header">
             <h3 id="galleryTitle">نمونه‌کارها</h3>
-            <button class="modal-close" onclick="closeAllModals()" style="position:static;"><i class="fa-solid fa-xmark"></i></button>
+            <button class="modal-close" onclick="closeAllModals()" style="position:static;"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i></button>
         </div>
         <div class="gallery-grid" id="galleryGrid"></div>
     </div>
@@ -1285,11 +1320,11 @@ footer h4 { margin-bottom:15px; }
 <!-- VIEWER MODAL -->
 <div class="modal viewer-modal" id="viewerModal">
     <div class="modal-content">
-        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i></button>
         <img class="viewer-image" id="viewerImage" src="" alt="نمونه‌کار">
         <div class="viewer-actions">
-            <button class="btn btn-primary" id="shareWorkBtn"><i class="fa-solid fa-share-nodes"></i> اشتراک‌گذاری</button>
-            <button class="btn btn-secondary" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i> بستن</button>
+            <button class="btn btn-primary" id="shareWorkBtn"><i class="fa-solid fa-share-nodes" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 8-5M8 13l8 5M8 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM22 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM22 20a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/></svg></i> اشتراک‌گذاری</button>
+            <button class="btn btn-secondary" onclick="closeAllModals()"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i> بستن</button>
         </div>
     </div>
 </div>
@@ -1322,9 +1357,14 @@ categories.forEach((c, i) => {
     card.innerHTML = `
         <img src="${coverPath}${c.prefix}.jpg" alt="${c.title}" loading="lazy">
         <div class="category-label">
-            <i class="fa-solid fa-chevron-left"></i>
+            <div><strong>${c.title}</strong><small>${c.count.toLocaleString("fa-IR")} نمونه‌کار · مشاهده مجموعه</small></div>
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></i>
         </div>
     `;
+    card.setAttribute("role", "button");
+    card.tabIndex = 0;
+    card.setAttribute("aria-label", c.title);
+    card.addEventListener("keydown", e => { if(e.key === "Enter" || e.key === " ") { e.preventDefault(); openGallery(i); } });
     card.addEventListener("click", () => openGallery(i));
     grid.appendChild(card);
 });
@@ -1390,6 +1430,7 @@ document.getElementById("shareWorkBtn").addEventListener("click", async () => {
 // MODAL HELPERS
 // ============================================================
 function openModal(id) {
+    closeDrawer();
     closeAllModals();
     const m = document.getElementById(id);
     if (m) { m.classList.add("active"); document.body.style.overflow = "hidden"; }
@@ -1402,7 +1443,7 @@ document.querySelectorAll(".modal").forEach(m => {
     m.addEventListener("click", e => { if (e.target === m) closeAllModals(); });
 });
 document.addEventListener("keydown", e => {
-    if (e.key === "Escape") closeAllModals();
+    if (e.key === "Escape") { closeAllModals(); closeDrawer(); }
 });
 
 // ============================================================
@@ -1474,12 +1515,13 @@ document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 // ============================================================
 // LANGUAGE
 // ============================================================
-let lang = localStorage.getItem("puria-lang") || "fa";
+let lang = "fa";
+try { lang = localStorage.getItem("puria-lang") || "fa"; } catch(e) {}
 function toggleLang() {
     lang = lang === "fa" ? "en" : "fa";
-    localStorage.setItem("puria-lang", lang);
+    try { localStorage.setItem("puria-lang", lang); } catch(e) {}
     document.getElementById("bottomLanguageBtn").textContent = lang === "fa" ? "EN" : "FA";
-    document.getElementById("drawerLanguageBtn").innerHTML = `<i class="fa-solid fa-language"></i> ${lang === "fa" ? "English" : "فارسی"}`;
+    document.getElementById("drawerLanguageBtn").innerHTML = `<i class="fa-solid fa-language" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5h12M8 2v3M4 5c0 6 6 10 9 11M12 5c0 6-6 10-9 11M14 21l4-11 4 11M16 17h4"/></svg></i> ${lang === "fa" ? "English" : "فارسی"}`;
 }
 document.getElementById("bottomLanguageBtn").addEventListener("click", toggleLang);
 document.getElementById("drawerLanguageBtn").addEventListener("click", toggleLang);
@@ -1505,5 +1547,5 @@ document.addEventListener("touchstart", e => {
 document.addEventListener("touchend", () => { clearTimeout(timer); });
 document.addEventListener("touchmove", () => { clearTimeout(timer); });
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3e044931e53b994',t:'MTc4OTkwMTQxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
