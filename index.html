@@ -77,7 +77,6 @@ body::before {
 }
 a { color:inherit; text-decoration:none; }
 button { font-family:inherit; cursor:pointer; }
-img { -webkit-user-drag:none; user-drag:none; }
 
 .container {
     width: min(1100px, 92%);
@@ -518,8 +517,6 @@ section { padding: 90px 0; }
     height: 100%;
     object-fit: cover;
     transition: .6s cubic-bezier(.2,.8,.2,1);
-    pointer-events: none;
-    user-select: none;
 }
 .category-card:hover img { transform:scale(1.05); }
 .category-card::after {
@@ -863,16 +860,20 @@ footer h4 { margin-bottom:15px; }
 .gallery-header h3 {
     font-size: 18px;
 }
+/* کادر هر نمونه‌کار دقیقاً به‌اندازه و نسبت خود عکس است؛ بدون برش و بدون حاشیه سیاه */
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    columns: 3;
+    column-gap: 12px;
     padding: 0 20px 25px;
     overflow-y: auto;
     max-height: calc(90vh - 80px);
     flex: 1 1 auto;
 }
 .gallery-grid .work-item {
+    position: relative;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin-bottom: 12px;
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid var(--border);
@@ -886,18 +887,43 @@ footer h4 { margin-bottom:15px; }
 }
 .gallery-grid .work-item img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;  /* تغییر از cover به contain برای جلوگیری از برش */
-    pointer-events: none;
-    user-select: none;
-    background: #0a0a0a;   /* پس‌زمینه برای فضای خالی */
+    height: auto;   /* ارتفاع کادر = ارتفاع واقعی عکس، بدون هیچ برشی */
+    display: block;
 }
-/* نسبت‌های متفاوت برای دسته‌ها */
-.gallery-grid .work-item.banner {
-    aspect-ratio: 16 / 9;
+/* دکمه دانلود روی هر نمونه‌کار */
+.work-item .download-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    border: 1px solid rgba(232,216,167,.4);
+    background: rgba(10,10,10,.72);
+    backdrop-filter: blur(8px);
+    color: var(--gold2);
+    font-size: 15px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: .25s;
 }
-.gallery-grid .work-item:not(.banner) {
-    aspect-ratio: 4 / 5;
+.work-item:hover .download-btn,
+.work-item:focus-within .download-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+.work-item .download-btn:hover {
+    background: var(--gold);
+    color: #151610;
+    border-color: var(--gold);
+}
+/* در موبایل دکمه دانلود همیشه دیده شود */
+@media (hover: none) {
+    .work-item .download-btn { opacity: 1; transform: none; }
 }
 
 /* --- VIEWER MODAL --- */
@@ -911,8 +937,6 @@ footer h4 { margin-bottom:15px; }
     object-fit: contain;
     display: block;
     padding: 10px;
-    pointer-events: none;
-    user-select: none;
 }
 .viewer-actions {
     padding: 15px;
@@ -945,7 +969,7 @@ footer h4 { margin-bottom:15px; }
     .stats { grid-template-columns:1fr; }
     .social-grid { grid-template-columns:1fr; }
     .footer-grid { grid-template-columns:1fr; }
-    .gallery-grid { grid-template-columns:repeat(2,1fr); padding:0 12px 15px; }
+    .gallery-grid { columns:2; padding:0 12px 15px; }
     .floating-nav { bottom:12px; }
     .floating-nav button { width:42px; height:42px; }
     .back-top { bottom:80px; }
@@ -1323,7 +1347,8 @@ i[class*="fa-"]::before{display:none!important}i[class*="fa-"]{display:inline-fl
         <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i></button>
         <img class="viewer-image" id="viewerImage" src="" alt="نمونه‌کار">
         <div class="viewer-actions">
-            <button class="btn btn-primary" id="shareWorkBtn"><i class="fa-solid fa-share-nodes" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 8-5M8 13l8 5M8 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM22 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM22 20a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/></svg></i> اشتراک‌گذاری</button>
+            <button class="btn btn-primary" id="downloadWorkBtn"><i class="fa-solid fa-download" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"/></svg></i> دانلود تصویر</button>
+            <button class="btn btn-secondary" id="shareWorkBtn"><i class="fa-solid fa-share-nodes" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 8-5M8 13l8 5M8 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM22 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM22 20a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/></svg></i> اشتراک‌گذاری</button>
             <button class="btn btn-secondary" onclick="closeAllModals()"><i class="fa-solid fa-xmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg></i> بستن</button>
         </div>
     </div>
@@ -1370,7 +1395,7 @@ categories.forEach((c, i) => {
 });
 
 // ============================================================
-// GALLERY (با نسبت‌های متفاوت)
+// GALLERY (کادر هر آیتم دقیقاً متناسب با ابعاد خود عکس)
 // ============================================================
 let currentCategory = 0;
 const galleryModal = document.getElementById("galleryModal");
@@ -1383,13 +1408,19 @@ function openGallery(index) {
     galleryTitle.textContent = c.title;
     galleryGrid.innerHTML = "";
     const files = Array.from({ length: c.count }, (_, i) => `${basePath}${c.prefix}${i+1}.jpg`);
-    const isBanner = c.prefix === "sete"; // دسته بنر سایت
 
     files.forEach((src) => {
         const item = document.createElement("div");
         item.className = "work-item";
-        if (isBanner) item.classList.add("banner");
-        item.innerHTML = `<img src="${src}" loading="lazy" draggable="false">`;
+        item.innerHTML = `
+            <img src="${src}" alt="${c.title}" loading="lazy">
+            <button class="download-btn" title="دانلود تصویر" aria-label="دانلود تصویر">
+                <i class="fa-solid fa-download" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19h16"/></svg></i>
+            </button>`;
+        item.querySelector(".download-btn").addEventListener("click", (e) => {
+            e.stopPropagation();
+            downloadImage(src);
+        });
         item.addEventListener("click", () => openViewer(src));
         galleryGrid.appendChild(item);
     });
@@ -1410,6 +1441,35 @@ function openViewer(src) {
     viewerModal.classList.add("active");
     document.body.style.overflow = "hidden";
 }
+
+// ============================================================
+// DOWNLOAD WORK (دانلود مستقیم عکس — سازگار با گیت‌هاب پیجز)
+// ============================================================
+async function downloadImage(src) {
+    const filename = decodeURIComponent(src.split("/").pop() || "puria-graph.jpg");
+    showToast("در حال آماده‌سازی دانلود...");
+    try {
+        const res = await fetch(new URL(src, location.href).href, { cache: "no-cache" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 4000);
+        showToast("دانلود شروع شد");
+    } catch (err) {
+        // در صورت هر خطا، تصویر در تب جدید باز می‌شود
+        window.open(new URL(src, location.href).href, "_blank");
+        showToast("تصویر در تب جدید باز شد");
+    }
+}
+document.getElementById("downloadWorkBtn").addEventListener("click", () => {
+    if (currentViewerSrc) downloadImage(currentViewerSrc);
+});
 
 // ============================================================
 // SHARE WORK
@@ -1527,25 +1587,8 @@ document.getElementById("bottomLanguageBtn").addEventListener("click", toggleLan
 document.getElementById("drawerLanguageBtn").addEventListener("click", toggleLang);
 
 // ============================================================
-// IMAGE PROTECTION
+// محافظت از تصاویر حذف شد — دانلود و ذخیره عکس‌ها اکنون آزاد است
 // ============================================================
-document.addEventListener("contextmenu", e => {
-    if (e.target.closest("img, .work-item, .category-card, .viewer-image")) e.preventDefault();
-});
-document.addEventListener("dragstart", e => {
-    if (e.target.tagName === "IMG") e.preventDefault();
-});
-document.addEventListener("selectstart", e => {
-    if (e.target.closest("img, .work-item, .category-card, .viewer-image")) e.preventDefault();
-});
-let timer;
-document.addEventListener("touchstart", e => {
-    if (e.target.closest("img, .work-item, .category-card, .viewer-image")) {
-        timer = setTimeout(() => e.preventDefault(), 600);
-    }
-}, { passive: false });
-document.addEventListener("touchend", () => { clearTimeout(timer); });
-document.addEventListener("touchmove", () => { clearTimeout(timer); });
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3e044931e53b994',t:'MTc4OTkwMTQxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
